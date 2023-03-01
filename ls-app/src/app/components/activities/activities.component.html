@@ -1,1 +1,21 @@
-<p>activities works!</p>
+
+<div *ngFor="let activity of activitiesList">
+  <mat-card>
+    <mat-card-title>Low</mat-card-title>
+    <mat-card-content>
+      <div *ngIf="activity.level === 'low'">{{activity.description}}</div>
+    </mat-card-content>
+  </mat-card>
+  <mat-card>
+    <mat-card-title>Medium</mat-card-title>
+    <mat-card-content></mat-card-content>
+  </mat-card>
+  <mat-card>
+    <mat-card-title>High</mat-card-title>
+    <mat-card-content></mat-card-content>
+  </mat-card>
+  <mat-card>
+    <mat-card-title>Critical</mat-card-title>
+    <mat-card-content></mat-card-content>
+  </mat-card>
+</div>

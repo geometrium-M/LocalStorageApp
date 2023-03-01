@@ -9,9 +9,14 @@ const routes: Routes = [
       m.LoginModule)
   },
   {
-    path:'',
+    path:'add',
     loadChildren:() => import('./components/add-activity/modules/add-activity.module').then(m=>
       m.AddActivityModule)
+  },
+  {
+    path:'',
+    loadChildren:() => import('./components/activities/modules/activities.module').then(m=>
+      m.ActivitiesModule)
   },
 
 ];
