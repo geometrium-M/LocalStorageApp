@@ -6,6 +6,8 @@ import {BehaviorSubject, Observable} from 'rxjs';
   providedIn: 'root'
 })
 export class ActivitiesService {
+  
+ 
 
   private list = new BehaviorSubject<Array<IActivity>>([]);
 

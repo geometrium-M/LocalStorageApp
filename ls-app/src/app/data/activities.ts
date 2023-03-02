@@ -2,19 +2,23 @@ import { IActivity } from "../model/activity";
 
 export const activitiesList: IActivity[] =[
   {
-    description: 'desc',
+    description: 'low1',
     level: 'Low'
   },
   {
-    description: 'qweqweqweqw',
+    description: 'low2',
     level: 'Low'
   },
   {
-    description: 'desc',
+    description: 'medium1',
     level: 'Medium'
   },
   {
-    description: 'desc',
+    description: 'medium2',
+    level: 'Medium'
+  },
+  {
+    description: 'high1',
     level: 'High'
   }
 

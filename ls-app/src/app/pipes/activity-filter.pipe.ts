@@ -8,11 +8,11 @@ import { IActivity } from '../model/activity';
 export class ActivityFilterPipe implements PipeTransform {
 
   transform(value: IActivity[], string: string): IActivity[] {
-    console.log(value)
-    console.log(string)
     return value.filter((activity)=>{
       return activity.level == string
     });
+
   }
+ 
 
 }

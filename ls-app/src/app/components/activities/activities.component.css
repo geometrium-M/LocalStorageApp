@@ -1,10 +1,15 @@
+p {
+  padding: 0;
+  margin: 0;
+}
+
 .wrapper {
   display: flex;
   justify-content: space-around;
 }
 
 .wrapper_cards {
-  width: 20%;
+  width: 30%;
   border: 2px solid rgb(192, 192, 236);
 }
 
@@ -17,3 +22,16 @@ mat-card-content {
   min-height: 200px;
 
 }
+
+.activity {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+}
+
+mat-radio-group {
+  display: flex;
+}
+
+

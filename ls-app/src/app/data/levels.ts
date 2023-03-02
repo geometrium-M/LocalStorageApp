@@ -12,9 +12,5 @@ export const levelsList: ILevel[] = [
   {
     value:'High',
     id:2
-  },
-  {
-    value:'Critical',
-    id:3
   }
 ]
