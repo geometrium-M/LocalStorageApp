@@ -4,7 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
-    path:'login',
+    path:'',
     loadChildren:() => import('./components/login/modules/login.module').then(m=>
       m.LoginModule)
   },
@@ -14,7 +14,7 @@ const routes: Routes = [
       m.AddActivityModule)
   },
   {
-    path:'',
+    path:'activities',
     loadChildren:() => import('./components/activities/modules/activities.module').then(m=>
       m.ActivitiesModule)
   },

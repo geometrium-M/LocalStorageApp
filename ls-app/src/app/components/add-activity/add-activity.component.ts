@@ -44,7 +44,7 @@ export class AddActivityComponent implements OnInit {
       level:this.form.value.selectedLevel
     }
     this.activitiesService.addActivity(activity)
-  this.router.navigate([''])
+  this.router.navigate(['activities'])
   }
 
  

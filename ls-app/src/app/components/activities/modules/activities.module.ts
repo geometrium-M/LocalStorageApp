@@ -6,6 +6,7 @@ import { ActivitiesComponent } from "../activities.component";
 import {MatCardModule} from '@angular/material/card';
 
 import { ActivitiesRoutingModule } from "./activities-routing.module"
+import { ActivityFilterPipe } from "src/app/pipes/activity-filter.pipe";
 
 
 
@@ -13,11 +14,11 @@ import { ActivitiesRoutingModule } from "./activities-routing.module"
     imports : [
         CommonModule,
         MatCardModule,
-        ActivitiesRoutingModule
+        ActivitiesRoutingModule,
     ],
     declarations: [
-      ActivitiesComponent
-      
+      ActivitiesComponent,
+      ActivityFilterPipe
     ],
     providers:[]
 })
