@@ -5,8 +5,8 @@
       <mat-card-title>{{priority}}</mat-card-title>
       <mat-card-content>
         <div formArrayName="activities">
-          <div *ngFor="let activity of form.get('activities')!.value | activityFilter : priority; let i = index">
-            <div [formGroupName]='i' class="activity"> 
+          <div *ngFor="let activity of form.get('activities')!.value; let i = index">
+            <div *ngIf="priority === activity.level" [formGroupName]='i' class="activity"> 
               <div>{{activity.description}}</div>      
               <mat-checkbox formControlName="checked"> mark as completed</mat-checkbox>
             </div>          
@@ -14,23 +14,19 @@
         </div>
       </mat-card-content>
     </mat-card>
-  </div>
+  </div> 
 </div>
 
-<div>
-  <button (click)="showCompleted()">show completed</button>
-</div>
+<div>{{form.value | json}}</div> 
 
-<ng-template [ngIf]="completed">
-  <div></div>
-  <mat-card>
-    <mat-card-title></mat-card-title>
-    <mat-card-content>
-      <div></div>
-    </mat-card-content>
-  </mat-card>
-  <div>{{completedList}}</div>
-</ng-template>
 
-<div>{{form.value | json}}</div>
+
+
+
+
+
+
+
+
+
 

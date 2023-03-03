@@ -41,7 +41,8 @@ export class AddActivityComponent implements OnInit {
 
     const activity:IActivity = {
       description:this.form.value.activity,
-      level:this.form.value.selectedLevel
+      level:this.form.value.selectedLevel,
+      checked:false
     }
     this.activitiesService.addActivity(activity)
   this.router.navigate(['activities'])

@@ -3,7 +3,9 @@ import { ActivitiesService } from 'src/app/services/activities.service';
 import { IActivity } from 'src/app/model/activity';
 import { activitiesList } from 'src/app/data/activities';
 
-import { FormArray, FormBuilder,FormGroup } from '@angular/forms';
+import { FormArray, FormBuilder,FormControl,FormGroup } from '@angular/forms';
+
+import * as _ from 'lodash';
 
 
 
@@ -13,7 +15,9 @@ import { FormArray, FormBuilder,FormGroup } from '@angular/forms';
   styleUrls: ['./activities.component.css']
 })
 export class ActivitiesComponent implements OnInit {
+  
   form:FormGroup
+
   completed = true
   completedList:string[] = []
 
@@ -36,10 +40,10 @@ export class ActivitiesComponent implements OnInit {
 
   patch() {
     const activitiesControl = <FormArray>this.form.get('activities');
+    this.activitiesList.forEach(activity=>{
+      activitiesControl.push(this.patchValues(activity.description,activity.level, activity.checked))
 
-    for(let i=0; i<this.activitiesList.length; i++) {
-      activitiesControl.push(this.patchValues(this.activitiesList[i].description, this.activitiesList[i].level,false))
-    }
+    })
   }
 
   patchValues(description:string, level:string, checked:boolean) {
@@ -60,5 +64,9 @@ export class ActivitiesComponent implements OnInit {
       console.log(this.completedList)
       this.completed = true
   }
-
+ 
+  
 }
+
+
+
