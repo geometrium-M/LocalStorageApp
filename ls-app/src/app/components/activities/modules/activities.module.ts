@@ -13,6 +13,8 @@ import { ActivityFilterPipe } from "src/app/pipes/activity-filter.pipe";
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatRadioModule} from '@angular/material/radio';
 
+import {DragDropModule} from '@angular/cdk/drag-drop';
+
 
 
 @NgModule ({
@@ -23,7 +25,8 @@ import {MatRadioModule} from '@angular/material/radio';
         ReactiveFormsModule,
         MatCardModule,
         MatCheckboxModule,
-        MatRadioModule
+        MatRadioModule,
+        DragDropModule
         
     ],
     declarations: [

@@ -6,6 +6,7 @@ import { activitiesList } from 'src/app/data/activities';
 import { FormArray, FormBuilder,FormControl,FormGroup } from '@angular/forms';
 
 import * as _ from 'lodash';
+import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 
 
 
@@ -24,6 +25,11 @@ export class ActivitiesComponent implements OnInit {
   listOfPriority: string[] = ['Low', 'Medium', 'High']
   activitiesList:IActivity[] = activitiesList
 
+  list1 = ['1','2','3']
+  list2 = ['10','20','30']
+  list3 = ['111','211','311']
+
+  items = ['firstList', 'secondList', 'thirdList']
 
   constructor(private activitiesService:ActivitiesService, private fb:FormBuilder){
     // this.activitiesService.activitiesList.subscribe(list=>this.activitiesList = list)
@@ -63,6 +69,59 @@ export class ActivitiesComponent implements OnInit {
       }})
       console.log(this.completedList)
       this.completed = true
+  }
+
+  // drop(event: CdkDragDrop<string[]>) {
+  //   console.log(event);
+
+  //   if (event.previousContainer === event.container) {
+  //     moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+  //     console.log(event.container.data)
+  //   } else {
+  //     transferArrayItem(event.previousContainer.data,
+  //       event.container.data,
+  //       event.previousIndex,
+  //       event.currentIndex);
+  //       console.log(event.currentIndex)
+  //   }
+  // }
+
+  cdkDropListConnectedTo(priority) {
+    let dropList =[]
+    this.listOfPriority.forEach(item=>{
+      if(item != priority) dropList.push(item)
+    })
+
+    return dropList
+
+  }
+
+  cdkDropListData(level) {
+    let list = []
+
+    this.activitiesList.forEach(item=>{
+      if(item.level != level) list.push(item)
+    })
+
+    return list
+  }
+
+  drop(event: CdkDragDrop<string[]>) {
+    moveItemInArray(this.activitiesList, event.previousIndex, event.currentIndex);
+  }
+
+  
+  drop1(event: CdkDragDrop<string[]>) {
+    if (event.previousContainer === event.container) {
+      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+    } else {
+      transferArrayItem(
+        event.previousContainer.data,
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex,
+      );
+    }
   }
  
   
