@@ -1,41 +1,81 @@
 
-<div class="wrapper" [formGroup]="form">
-  <div *ngFor="let priority of listOfPriority; let i = index" class="wrapper_cards">
-    <mat-card>
-      <mat-card-title>{{priority}}</mat-card-title>
-      <mat-card-content cdkDropList id=`priority` [cdkDropListData]="cdkDropListData(priority)" [cdkDropListConnectedTo]="cdkDropListConnectedTo(priority)">
-        <div formArrayName="activities">
-          <div>
-            <div *ngFor="let activity of form.get('activities')!.value; let i = index" class="item" cdkDrag>
-              <div *ngIf="priority === activity.level" [formGroupName]='i' class="activity"> 
-            
-                {{activity.description}}
-                  <mat-checkbox formControlName="checked"> mark as completed</mat-checkbox>
-                   
-             
-              </div>          
+
+<div [formGroup]="form">
+  <div class="wrapper">
+    <div class="wrapper_list">
+      <div *ngFor="let priority of listOfPriority; let i = index" class="list-card"> 
+        <mat-card>
+          <mat-card-title>{{priority.value}}</mat-card-title>
+          <mat-card-content >
+            <div formArrayName="activities">
+              <div class="example-container">
+                <div
+                  cdkDropList
+                  id = "{{priority.id}}"
+                  [cdkDropListData]="priority.activities"
+                  [cdkDropListConnectedTo]="cdkDropListConnectedTo()"
+                  class="example-list"
+                  (cdkDropListDropped)="drop($event)"
+                >
+                  <div class="example-box" *ngFor="let item of priority.activities" cdkDrag>
+                    {{item}}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </div> 
+    </div>
+    <div class="list-done">
+      <mat-card>
+        <mat-card-title>Done</mat-card-title>
+
+        <mat-card-content>
+          <div class="example-container">
+            <div
+              cdkDropList
+              id = "{{doneList.id}}"
+              [cdkDropListData]="doneList"
+              [cdkDropListConnectedTo]="cdkDropListConnectedTo()"
+              class="example-list"
+              (cdkDropListDropped)="drop($event)"
+            > 
+
+              <!-- <div class="example-box" *ngFor="let item of doneList.activities" cdkDrag>
+                {{item}}
+              </div> -->
+           
             </div>
           </div>
-        
-        </div>
-      </mat-card-content>
-    </mat-card>
-  </div> 
+
+      
+         
+        </mat-card-content>
+      </mat-card>
+    </div>
+  
+    
+  </div>
+ 
 </div>
 
-<div>{{form.value | json}}</div> 
 
-<div cdkDropList (cdkDropListDropped)="drop($event)">
+<div>{{form.value | json}}</div>
+<!-- <div cdkDropList (cdkDropListDropped)="drop($event)">
   <div *ngFor="let act of activitiesList" cdkDrag>
     <div class="example-custom-placeholder" *cdkDragPlaceholder></div>
     {{act.description}}
   </div>
 </div>
-
  <div style="display: flex; justify-content: space-around;">
   <div cdkDropListGroup>
     <div>1
-      <div cdkDropList  [cdkDropListData]="list1" 	(cdkDropListDropped)="drop1($event)" id="1"
+      <div
+      cdkDropList  
+      [cdkDropListData]="list1"  
+      
+      (cdkDropListDropped)="drop($event)"
       >
       <div *ngFor="let item of list1" [cdkDragData]="item"  cdkDrag>{{item}}</div>
     </div>
@@ -44,7 +84,8 @@
   </div>
   <div>
     <div>2
-      <div cdkDropList #secondList="cdkDropList" [cdkDropListData]="list2" 	(cdkDropListDropped)="drop1($event)" id="2"
+      <div 
+      cdkDropList   [cdkDropListData]="list2" 	(cdkDropListDropped)="drop($event)" 
      >
       <div *ngFor="let item of list2" [cdkDragData]="item" cdkDrag>{{item}}</div>
     </div>
@@ -52,13 +93,45 @@
   </div>
   <div>
     <div>3
-      <div cdkDropList #thirdList="cdkDropList" [cdkDropListData]="list3" 	(cdkDropListDropped)="drop1($event)" id="3"
+      <div 
+      cdkDropList [cdkDropListData]="list3" 	(cdkDropListDropped)="drop($event)"
      >
       <div *ngFor="let item of list3" [cdkDragData]="item"   cdkDrag>{{item}}</div>
     </div>
     </div>
   </div>
-</div> 
+</div>  -->
+
+
+<div class="example-container">
+  <h2>To do</h2>
+
+  <div
+    cdkDropList
+    #todoList="cdkDropList"
+    [cdkDropListData]="lowList"
+    [cdkDropListConnectedTo]="[doneList]"
+    class="example-list"
+    (cdkDropListDropped)="drop($event)">
+    <div class="example-box" *ngFor="let item of list1" cdkDrag>{{item}}</div>
+  </div>
+</div>
+
+<div class="example-container">
+  <h2>Done</h2>
+
+  <div
+    cdkDropList
+    #doneList="cdkDropList"
+    [cdkDropListData]="mediumList"
+    [cdkDropListConnectedTo]="[todoList]"
+    class="example-list"
+    (cdkDropListDropped)="drop($event)">
+    <div class="example-box" *ngFor="let item of list2" cdkDrag>{{item}}</div>
+  </div>
+</div>
+
+
 
 
 

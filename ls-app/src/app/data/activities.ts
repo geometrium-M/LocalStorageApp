@@ -3,27 +3,27 @@ import { IActivity } from "../model/activity";
 export const activitiesList: IActivity[] =[
   {
     description: '111',
-    level: 'Low',
+    level: 'low',
     checked:false
   },
   {
     description: 'low2',
-    level: 'Low',
+    level: 'low',
     checked:false
   },
   {
     description: 'medium1',
-    level: 'Medium',
+    level: 'medium',
     checked:false
   },
   {
     description: 'medium2',
-    level: 'Medium',
+    level: 'medium',
     checked:false
   },
   {
     description: 'high1',
-    level: 'High',
+    level: 'high',
     checked:false
   }
 
