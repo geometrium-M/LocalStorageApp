@@ -1,11 +1,13 @@
-<div>
-  <ul>
-    <li><a routerLink="">main</a></li>
-    <li><a routerLink="/add">add</a></li>
-    <li><a routerLink="/activities">activities</a></li>
-  </ul>
-</div>
+<app-tool-bar></app-tool-bar>
 
+<div class="wrapper">
+  <div class="wrapper-add">
+    <app-add-activity></app-add-activity>
+  </div>
+  <div class="wrapper-activities">
+    <app-activities></app-activities>
+  </div>
+</div>
 <router-outlet></router-outlet>
 
 

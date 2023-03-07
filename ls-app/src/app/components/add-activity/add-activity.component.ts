@@ -45,7 +45,7 @@ export class AddActivityComponent implements OnInit {
       checked:false
     }
     this.activitiesService.addActivity(activity)
-  this.router.navigate(['activities'])
+
   }
 
  

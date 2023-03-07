@@ -1,30 +1,28 @@
-<mat-card>
-  <mat-card-title></mat-card-title>
-  <mat-card-content>
-    <form [formGroup]="form" (ngSubmit)="onSubmit()">
-      <p>
-        <mat-form-field>
-          <mat-label>enter activity</mat-label>
-          <input type="text" matInput formControlName="activity">
-        </mat-form-field>
-      </p>
-      <p>
-        <mat-form-field>
-          <mat-label>level</mat-label>
-          <mat-select formControlName="selectedLevel">
-            <mat-option *ngFor="let level of levels" [value]="level.value">
-              {{level.value}}
-            </mat-option>
-          </mat-select>
-          <mat-error *ngIf="selectedLevel?.errors?.['required']">Please choose a level</mat-error>
-        </mat-form-field>
-      </p>
-      <div class="button">
-        <button type="submit" mat-button>Add</button>
-      </div>
-    </form>
-  </mat-card-content>
+<div class="wrapper-form">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <p>
+      <mat-form-field>
+        <mat-label>enter activity</mat-label>
+        <input type="text" matInput formControlName="activity">
+      </mat-form-field>
+    </p>
+    <p>
+      <mat-form-field>
+        <mat-label>level</mat-label>
+        <mat-select formControlName="selectedLevel">
+          <mat-option *ngFor="let level of levels" [value]="level.value">
+            {{level.value}}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="selectedLevel?.errors?.['required']">Please choose a level</mat-error>
+      </mat-form-field>
+    </p>
+    <div class="button">
+      <button type="submit"mat-button>Add</button>
+  
+    </div>
+  </form>
+</div>
 
-</mat-card>
 
 

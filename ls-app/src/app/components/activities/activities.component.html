@@ -1,14 +1,11 @@
 
-
-<div [formGroup]="form">
-  <div class="wrapper">
-    <div class="wrapper_list">
-      <div *ngFor="let priority of listOfPriority; let i = index" class="list-card"> 
+    <div class="activities">
+      <div *ngFor="let priority of listOfPriority; let i = index" class="card"> 
         <mat-card>
           <mat-card-title>{{priority.value}}</mat-card-title>
-          <mat-card-content >
-            <div formArrayName="activities">
-              <div class="example-container">
+          <mat-card-content>
+            <div>
+              <div>
                 <div
                   cdkDropList
                   id = "{{priority.id}}"
@@ -18,7 +15,14 @@
                   (cdkDropListDropped)="drop($event)"
                 >
                   <div class="example-box" *ngFor="let item of priority.activities" cdkDrag>
-                    {{item}}
+                    
+                      {{item.description}}
+                      <div class="actions">
+                       <button mat-icon-button (click)="delete(item)"><mat-icon class="i-delete">delete</mat-icon></button>
+                       <button mat-icon-button (click)="update()"><mat-icon>create</mat-icon></button>
+                       <input type="checkbox" [(ngModel)]='item.checked'> done
+                     </div>
+
                   </div>
                 </div>
               </div>
@@ -27,109 +31,13 @@
         </mat-card>
       </div> 
     </div>
-    <div class="list-done">
-      <mat-card>
-        <mat-card-title>Done</mat-card-title>
-
-        <mat-card-content>
-          <div class="example-container">
-            <div
-              cdkDropList
-              id = "{{doneList.id}}"
-              [cdkDropListData]="doneList"
-              [cdkDropListConnectedTo]="cdkDropListConnectedTo()"
-              class="example-list"
-              (cdkDropListDropped)="drop($event)"
-            > 
-
-              <!-- <div class="example-box" *ngFor="let item of doneList.activities" cdkDrag>
-                {{item}}
-              </div> -->
-           
-            </div>
-          </div>
-
-      
-         
-        </mat-card-content>
-      </mat-card>
-    </div>
-  
-    
-  </div>
  
-</div>
+  <button (click)="showCompleted()">Done</button>
 
 
-<div>{{form.value | json}}</div>
-<!-- <div cdkDropList (cdkDropListDropped)="drop($event)">
-  <div *ngFor="let act of activitiesList" cdkDrag>
-    <div class="example-custom-placeholder" *cdkDragPlaceholder></div>
-    {{act.description}}
-  </div>
-</div>
- <div style="display: flex; justify-content: space-around;">
-  <div cdkDropListGroup>
-    <div>1
-      <div
-      cdkDropList  
-      [cdkDropListData]="list1"  
-      
-      (cdkDropListDropped)="drop($event)"
-      >
-      <div *ngFor="let item of list1" [cdkDragData]="item"  cdkDrag>{{item}}</div>
-    </div>
- 
-    </div>
-  </div>
-  <div>
-    <div>2
-      <div 
-      cdkDropList   [cdkDropListData]="list2" 	(cdkDropListDropped)="drop($event)" 
-     >
-      <div *ngFor="let item of list2" [cdkDragData]="item" cdkDrag>{{item}}</div>
-    </div>
-    </div>
-  </div>
-  <div>
-    <div>3
-      <div 
-      cdkDropList [cdkDropListData]="list3" 	(cdkDropListDropped)="drop($event)"
-     >
-      <div *ngFor="let item of list3" [cdkDragData]="item"   cdkDrag>{{item}}</div>
-    </div>
-    </div>
-  </div>
-</div>  -->
 
 
-<div class="example-container">
-  <h2>To do</h2>
 
-  <div
-    cdkDropList
-    #todoList="cdkDropList"
-    [cdkDropListData]="lowList"
-    [cdkDropListConnectedTo]="[doneList]"
-    class="example-list"
-    (cdkDropListDropped)="drop($event)">
-    <div class="example-box" *ngFor="let item of list1" cdkDrag>{{item}}</div>
-  </div>
-</div>
-
-<div class="example-container">
-  <h2>Done</h2>
-
-  <div
-    cdkDropList
-    #doneList="cdkDropList"
-    [cdkDropListData]="mediumList"
-    [cdkDropListConnectedTo]="[todoList]"
-    class="example-list"
-    (cdkDropListDropped)="drop($event)">
-    <div class="example-box" *ngFor="let item of list2" cdkDrag>{{item}}</div>
-  </div>
-</div>
 
 
 

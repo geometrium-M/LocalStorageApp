@@ -2,15 +2,15 @@ import { ILevel } from "../model/level";
 
 export const levelsList: ILevel[] = [
   {
-    value:'Low',
+    value:'low',
     id:0
   },
   {
-    value:'Medium',
+    value:'medium',
     id:1
   },
   {
-    value:'High',
+    value:'high',
     id:2
   }
 ]

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { IActivity } from '../model/activity';
-import {BehaviorSubject, Observable} from 'rxjs';
+import { IPriority } from '../model/priority';
+import { priorities } from '../data/priorities';
 
 @Injectable({
   providedIn: 'root'
@@ -8,15 +9,29 @@ import {BehaviorSubject, Observable} from 'rxjs';
 export class ActivitiesService {
   
  
+  priorityList:IPriority[] = priorities
 
-  private list = new BehaviorSubject<Array<IActivity>>([]);
-
-  get activitiesList(): Observable<Array<IActivity>> { return this.list.asObservable(); }
 
   addActivity(activity: IActivity):void {
-    this.list.next([...this.list.getValue(), activity])
-    console.log(this.list)
+
+    const priority = this.priorityList.find(p=>p.value === activity.level)
+    if(priority) priority.activities.push(activity)
   }
 
+  deleteActivity(activity:IActivity):void {
 
+    const priority = this.priorityList.find(p=>p.value === activity.level)
+
+    if(priority) {
+      const toDelete =  priority.activities.find(activ=>activ.description === activity.description && activ.checked === activity.checked)
+
+      if(toDelete) {
+        let indx = priority.activities.indexOf(toDelete)
+        priority.activities.splice(indx,1)
+      }
+    } 
+
+    console.log(this.priorityList)
+
+  }
 }

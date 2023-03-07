@@ -3,21 +3,21 @@ import { RouterModule, Routes } from '@angular/router';
 
 
 const routes: Routes = [
-  {
-    path:'',
-    loadChildren:() => import('./components/login/modules/login.module').then(m=>
-      m.LoginModule)
-  },
-  {
-    path:'add',
-    loadChildren:() => import('./components/add-activity/modules/add-activity.module').then(m=>
-      m.AddActivityModule)
-  },
-  {
-    path:'activities',
-    loadChildren:() => import('./components/activities/modules/activities.module').then(m=>
-      m.ActivitiesModule)
-  },
+  // {
+  //   path:'',
+  //   loadChildren:() => import('./components/login/modules/login.module').then(m=>
+  //     m.LoginModule)
+  // },
+  // {
+  //   path:'add',
+  //   loadChildren:() => import('./components/add-activity/modules/add-activity.module').then(m=>
+  //     m.AddActivityModule)
+  // },
+  // {
+  //   path:'activities',
+  //   loadChildren:() => import('./components/activities/modules/activities.module').then(m=>
+  //     m.ActivitiesModule)
+  // },
 
 ];
 

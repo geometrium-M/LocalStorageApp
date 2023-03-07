@@ -4,12 +4,12 @@ export const activitiesList: IActivity[] =[
   {
     description: '111',
     level: 'low',
-    checked:false
+    checked:true
   },
   {
     description: 'low2',
     level: 'low',
-    checked:false
+    checked:true
   },
   {
     description: 'medium1',

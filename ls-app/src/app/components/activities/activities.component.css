@@ -3,34 +3,17 @@ p {
   margin: 0;
 }
 
-.wrapper {
+.activities {
   width: 100%;
   display: flex;
   justify-content: space-between;
 
-
 }
-
-.wrapper_list {
-  max-width: 70%;
-  display: flex;
-  justify-content: space-between;
-
-
-
-}
-.list-card {
+.card {
   width: 30%;
-}
-.list-done {
-  width: 30%;
-}
-
-.list-done mat-card {
-  width: 70%;
-  margin-left: 10%;
 
 }
+
 mat-card {
 
   border: 2px solid rgb(192, 192, 236);
@@ -42,9 +25,13 @@ mat-card-title {
 }
 
 mat-card-content {
-  min-height: 200px;
+  min-height: 50px;
 
 }
+.mat-mdc-card-content:last-child {
+  padding: 0;
+}
+
 
 .activity {
   display: flex;
@@ -94,6 +81,7 @@ mat-radio-group {
   cursor: move;
   background: white;
   font-size: 14px;
+  height: 50px;
 }
 
 .cdk-drag-preview {
@@ -118,6 +106,16 @@ mat-radio-group {
 
 .example-list.cdk-drop-list-dragging .example-box:not(.cdk-drag-placeholder) {
   transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+
+.i-delete {
+  color: rgb(245, 23, 23);
+}
+
+.actions {
+  display: flex;
+  align-items: center;
 }
 
 
