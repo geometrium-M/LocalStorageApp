@@ -13,25 +13,37 @@ export class ActivitiesService {
 
 
   addActivity(activity: IActivity):void {
-
     const priority = this.priorityList.find(p=>p.value === activity.level)
     if(priority) priority.activities.push(activity)
   }
 
-  deleteActivity(activity:IActivity):void {
+  deleteActivity(priority,index):void {
+    const list = this.priorityList.find(prList=> prList.value === priority)
+    list.activities.splice(index,1)
+  }
 
-    const priority = this.priorityList.find(p=>p.value === activity.level)
+  updateActivity(priority, index,value) {
+    const list = this.priorityList.find(prList=> prList.value === priority)
+    list.activities[index].description = value
+  } 
 
-    if(priority) {
-      const toDelete =  priority.activities.find(activ=>activ.description === activity.description && activ.checked === activity.checked)
+  getDoneActivities(){
+    let completed = []
+    this.priorityList.forEach(item=>{
+      item.activities.forEach(el=>{
+        if(el.checked) completed.push(el)
+      })
+    })
+    return completed
+  }
 
-      if(toDelete) {
-        let indx = priority.activities.indexOf(toDelete)
-        priority.activities.splice(indx,1)
-      }
-    } 
-
-    console.log(this.priorityList)
-
+  getToDoActivities() {
+    let toDo = []
+    this.priorityList.forEach(item=>{
+      item.activities.forEach(el=>{
+        if(!el.checked) toDo.push(el)
+      })
+    })
+    return toDo
   }
 }

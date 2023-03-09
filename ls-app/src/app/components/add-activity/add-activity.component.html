@@ -10,7 +10,7 @@
       <mat-form-field>
         <mat-label>level</mat-label>
         <mat-select formControlName="selectedLevel">
-          <mat-option *ngFor="let level of levels" [value]="level.value">
+          <mat-option *ngFor="let level of levels" [value]="level.id">
             {{level.value}}
           </mat-option>
         </mat-select>

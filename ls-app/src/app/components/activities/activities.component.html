@@ -14,14 +14,29 @@
                   class="example-list"
                   (cdkDropListDropped)="drop($event)"
                 >
-                  <div class="example-box" *ngFor="let item of priority.activities" cdkDrag>
+                  <div class="example-box" *ngFor="let item of priority.activities; let idx = index" cdkDrag>
+                  
+                      <input type="text" value="{{item.description}}" #inpt [ngClass]="{'disabled':!checkbox.checked}">
+                   
                     
-                      {{item.description}}
+              
                       <div class="actions">
-                       <button mat-icon-button (click)="delete(item)"><mat-icon class="i-delete">delete</mat-icon></button>
-                       <button mat-icon-button (click)="update()"><mat-icon>create</mat-icon></button>
-                       <input type="checkbox" [(ngModel)]='item.checked'> done
+                        <button mat-icon-button (click)="delete(priority.value,idx)">
+                          <mat-icon class="i-delete">delete</mat-icon>
+                        </button>
+                       
+                          <label (click)="update(checkbox,priority.value,idx,inpt.value)">
+                            <button mat-icon-button>
+                              <mat-icon *ngIf="checkbox.checked">done</mat-icon>
+                              <mat-icon *ngIf="!checkbox.checked">create</mat-icon>
+                            </button>
+                            <input type="checkbox" #checkbox hidden>
+                          </label>
+  
+                       <input type="checkbox" [(ngModel)]='item.checked'>done
                      </div>
+
+                     <div class="date">{{item.date | date:'short'}}</div>
 
                   </div>
                 </div>
@@ -32,7 +47,9 @@
       </div> 
     </div>
  
-  <button (click)="showCompleted()">Done</button>
+
+
+
 
 
 

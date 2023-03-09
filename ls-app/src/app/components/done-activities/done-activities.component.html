@@ -1,0 +1,16 @@
+
+  <div class="wrapper">
+    <mat-card>
+      <mat-card-title>Done</mat-card-title>
+      <mat-card-content *ngFor="let item of list">
+        <div class="item">
+          <div> {{item.description}}</div>
+          <div>{{item.date | date:'short'}}</div>
+        </div>
+       
+      </mat-card-content>
+      
+    </mat-card>
+   
+  </div>
+

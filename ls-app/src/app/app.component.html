@@ -1,13 +1,44 @@
 <app-tool-bar></app-tool-bar>
 
 <div class="wrapper">
-  <div class="wrapper-add">
+
+  <div class="wrapper-actions">
+
     <app-add-activity></app-add-activity>
+
+    <button mat-button (click)="showDone = !showDone">
+      <span *ngIf="!showDone">show done list</span>
+      <span *ngIf="showDone">hide done list</span>
+    </button>
+    <button mat-button (click)="showToDo = !showToDo">
+      <span *ngIf="!showToDo">show to do list</span>
+      <span *ngIf="showToDo">hide to do list</span>
+      </button>
   </div>
+
   <div class="wrapper-activities">
-    <app-activities></app-activities>
+    <div>
+      <app-activities></app-activities>
+    </div>
+   
+
+    <div class="wrapper-cards">
+      <div *ngIf="showToDo">
+        <app-to-do-list></app-to-do-list>
+      </div>
+    
+      <div *ngIf="showDone">
+        <app-done-activities></app-done-activities>
+      </div>
+    </div>
+
+   
+      
+    
   </div>
 </div>
+
+
 <router-outlet></router-outlet>
 
 

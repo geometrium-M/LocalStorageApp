@@ -21,6 +21,9 @@ import {MatIconModule} from '@angular/material/icon';
 import {DragDropModule} from '@angular/cdk/drag-drop';
 
 import { ActivityFilterPipe } from './pipes/activity-filter.pipe';
+import { DoneActivitiesComponent } from './components/done-activities/done-activities.component';
+import { ToDoListComponent } from './components/to-do-list/to-do-list.component';
+import { SortByPipe } from './pipes/sort-by.pipe';
 
 
 
@@ -33,7 +36,10 @@ import { ActivityFilterPipe } from './pipes/activity-filter.pipe';
     AddActivityComponent,
     ActivitiesComponent,
     ToolBarComponent,
-    ActivityFilterPipe
+    ActivityFilterPipe,
+    DoneActivitiesComponent,
+    ToDoListComponent,
+    SortByPipe
   ],
   imports: [
     BrowserModule,

@@ -42,7 +42,8 @@ export class AddActivityComponent implements OnInit {
     const activity:IActivity = {
       description:this.form.value.activity,
       level:this.form.value.selectedLevel,
-      checked:false
+      checked:false,
+      date:new Date()
     }
     this.activitiesService.addActivity(activity)
 

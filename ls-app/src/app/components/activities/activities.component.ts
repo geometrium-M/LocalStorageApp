@@ -14,6 +14,7 @@ import { IActivity } from 'src/app/model/activity';
 export class ActivitiesComponent implements OnInit {
 
 
+
   listOfPriority: IPriority[] 
 
   constructor(private activitiesService:ActivitiesService){
@@ -25,13 +26,14 @@ export class ActivitiesComponent implements OnInit {
 
 
   showCompleted() {
-    let completed = []
-    this.listOfPriority.forEach(item=>{
-    item.activities.forEach(el=>{
-      if(el.checked) completed.push(el.description)
-    })
-    })
-     console.log(completed)
+    // let completed = []
+    // this.listOfPriority.forEach(item=>{
+    // item.activities.forEach(el=>{
+    //   if(el.checked) completed.push(el.description)
+    // })
+    // })
+    //  console.log(completed)
+    this.activitiesService.getDoneActivities()
   }
 
 
@@ -57,11 +59,14 @@ export class ActivitiesComponent implements OnInit {
   }
 
 
-  delete(activity:IActivity){
-    this.activitiesService.deleteActivity(activity)
+  delete(priority,index){
+    this.activitiesService.deleteActivity(priority,index)
   }
 
-  update(){}
+  update(checkbox,priority,index,value){
+    checkbox.checked = !checkbox.checked
+    if(!checkbox.checked) this.activitiesService.updateActivity(priority,index,value)
+  }
   
 
  
