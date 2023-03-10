@@ -1,6 +1,6 @@
 export interface IActivity {
   description: string,
-  level: string,
+  level: number,
   checked:boolean,
   date?:Date
 }

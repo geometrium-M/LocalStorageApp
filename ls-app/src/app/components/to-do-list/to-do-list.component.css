@@ -1,5 +1,4 @@
 mat-card {
-
   border: 2px solid rgb(192, 192, 236);
 }
 
@@ -8,8 +7,13 @@ mat-card-title {
   text-align: center;
 }
 
-mat-card-content {
-  min-height: 50px;
+.items {
+  border: solid 1px #ccc;
+  min-height: 60px;
+  background: white;
+  border-radius: 4px;
+  overflow: hidden;
+  display: block;
 
 }
 .mat-mdc-card-content {
@@ -27,9 +31,29 @@ mat-card-content {
   cursor: move;
   background: white;
   font-size: 14px;
-  min-height: 60px;
+  height: 60px;
 }
 
 .wrapper {
-  width: 30%;
+  width: 50%;
 }
+
+form {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.mat-mdc-form-field:first-child {
+width: 60%;
+}
+
+mat-label {
+  display: flex;
+  align-items: center;
+}
+
+mat-icon {
+ margin-right: 5px;
+}
+

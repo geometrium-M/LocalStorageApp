@@ -6,10 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'ls-app';
-
-  showToDo=false
-  showDone=false
-
-  
+  title = 'ls-app'; 
 }

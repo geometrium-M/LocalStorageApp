@@ -3,42 +3,26 @@
 <div class="wrapper">
 
   <div class="wrapper-actions">
-
     <app-add-activity></app-add-activity>
-
-    <button mat-button (click)="showDone = !showDone">
-      <span *ngIf="!showDone">show done list</span>
-      <span *ngIf="showDone">hide done list</span>
-    </button>
-    <button mat-button (click)="showToDo = !showToDo">
-      <span *ngIf="!showToDo">show to do list</span>
-      <span *ngIf="showToDo">hide to do list</span>
-      </button>
+    <button mat-button routerLink="">all lists</button>
+    <button mat-button routerLink="done">done list</button>
+    <button mat-button routerLink="to-do"> to do list</button>
+    <button mat-button routerLink="report">report</button>
+    <button type="button" class="btn btn-primary">Primary</button>
+   
   </div>
-
-  <div class="wrapper-activities">
-    <div>
-      <app-activities></app-activities>
-    </div>
-   
-
-    <div class="wrapper-cards">
-      <div *ngIf="showToDo">
-        <app-to-do-list></app-to-do-list>
-      </div>
-    
-      <div *ngIf="showDone">
-        <app-done-activities></app-done-activities>
-      </div>
-    </div>
-
-   
-      
-    
+  <div class="wrapper-activities"> 
+    <router-outlet></router-outlet>
   </div>
 </div>
 
+<div class="progress" role="progressbar" aria-label="Basic example" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+  example
+  <div class="progress-bar" style="width: 0%"></div>
+</div>
 
-<router-outlet></router-outlet>
+
+
+
 
 

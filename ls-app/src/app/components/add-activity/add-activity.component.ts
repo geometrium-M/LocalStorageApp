@@ -29,6 +29,7 @@ export class AddActivityComponent implements OnInit {
    this.form = this.fb.group({
     activity:this.fb.control(''),
     selectedLevel:this.fb.control('',[Validators.required])
+   
    })
  }
  
@@ -38,7 +39,6 @@ export class AddActivityComponent implements OnInit {
 
  onSubmit(){
   if(this.form.valid) {
-
     const activity:IActivity = {
       description:this.form.value.activity,
       level:this.form.value.selectedLevel,
@@ -48,10 +48,8 @@ export class AddActivityComponent implements OnInit {
     this.activitiesService.addActivity(activity)
 
   }
+  this.router.navigate([''])
 
- 
-
-  
  }
 
 

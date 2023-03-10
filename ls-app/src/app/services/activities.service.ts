@@ -10,10 +10,15 @@ export class ActivitiesService {
   
  
   priorityList:IPriority[] = priorities
+  totalList:number = 0
+  toDoList:number = 0
+  doneList:number = 0 
+
 
 
   addActivity(activity: IActivity):void {
-    const priority = this.priorityList.find(p=>p.value === activity.level)
+
+    const priority = this.priorityList.find(p=>p.id === activity.level)
     if(priority) priority.activities.push(activity)
   }
 
@@ -46,4 +51,37 @@ export class ActivitiesService {
     })
     return toDo
   }
+
+  getPercentage() {
+    
+    this.totalList = 0
+    this.priorityList.forEach(list=>{
+      this.totalList += list.activities.length
+    })
+
+    this.toDoList = this.getToDoActivities().length
+    this.doneList = this.getDoneActivities().length
+ 
+    let calc1 = (this.toDoList/this.totalList)*100
+    let calc2 = (this.doneList/this.totalList)*100
+
+  const chartOptions = {
+		animationEnabled: true,
+		title: {
+		  text: "Activities"
+		},
+		data: [{
+		  type: "pie",
+		  startAngle: -90,
+		  indexLabel: "{name}: {y}",
+		  yValueFormatString: "#,###.##'%'",
+		  dataPoints: [
+			{ y: calc1, name: "to do" },
+			{ y: calc2, name: "Electronics" }
+		  ]
+		}]
+	}
+  return chartOptions	
+  }
+  
 }

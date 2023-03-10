@@ -17,13 +17,21 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {ToolBarComponent } from './components/tool-bar/tool-bar.component';
 
 import {MatIconModule} from '@angular/material/icon';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
 
 import {DragDropModule} from '@angular/cdk/drag-drop';
 
-import { ActivityFilterPipe } from './pipes/activity-filter.pipe';
+
 import { DoneActivitiesComponent } from './components/done-activities/done-activities.component';
 import { ToDoListComponent } from './components/to-do-list/to-do-list.component';
 import { SortByPipe } from './pipes/sort-by.pipe';
+import { ActivitiesFilterPipe } from './pipes/activities-filter.pipe';
+import { ChartComponent } from './components/chart/chart.component';
+
+import * as CanvasJSAngularChart from '../assets/canvasjs.angular.components'
+var CanvasJSChart = CanvasJSAngularChart.CanvasJSChart;
+
+
 
 
 
@@ -36,10 +44,12 @@ import { SortByPipe } from './pipes/sort-by.pipe';
     AddActivityComponent,
     ActivitiesComponent,
     ToolBarComponent,
-    ActivityFilterPipe,
     DoneActivitiesComponent,
     ToDoListComponent,
-    SortByPipe
+    SortByPipe,
+    ActivitiesFilterPipe,
+    ChartComponent,
+    CanvasJSChart
   ],
   imports: [
     BrowserModule,
@@ -55,7 +65,8 @@ import { SortByPipe } from './pipes/sort-by.pipe';
     MatSelectModule,
     MatToolbarModule,
     DragDropModule,
-    MatIconModule
+    MatIconModule,
+    MatProgressBarModule
 
   ],
   providers: [],
