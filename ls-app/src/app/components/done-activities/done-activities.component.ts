@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivitiesService } from '../../services/activities.service';
 import { IActivity } from '../../model/activity';
+import { optionsList } from 'src/app/data/sortList';
 
 
 @Component({
@@ -11,6 +12,9 @@ import { IActivity } from '../../model/activity';
 export class DoneActivitiesComponent {
 
   list:IActivity[]
+  activitiesFilter = ''
+  optionsList = optionsList
+
 
   constructor(private activitiesService:ActivitiesService){
     this.list = this.activitiesService.getDoneActivities()

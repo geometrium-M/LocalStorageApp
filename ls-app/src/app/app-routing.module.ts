@@ -5,6 +5,8 @@ import { ToDoListComponent } from './components/to-do-list/to-do-list.component'
 import { DoneActivitiesComponent } from './components/done-activities/done-activities.component';
 import { ChartComponent } from './components/chart/chart.component';
 
+import { ShowListComponent } from './components/show-list/show-list.component';
+
 
 const routes: Routes = [
   {
@@ -22,6 +24,9 @@ const routes: Routes = [
   {
     path:'report',
     component:ChartComponent
+  },
+  {
+    path:'list', component:ShowListComponent
   }
 
 ];

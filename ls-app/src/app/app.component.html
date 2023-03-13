@@ -7,19 +7,23 @@
     <button mat-button routerLink="">all lists</button>
     <button mat-button routerLink="done">done list</button>
     <button mat-button routerLink="to-do"> to do list</button>
-    <button mat-button routerLink="report">report</button>
-    <button type="button" class="btn btn-primary">Primary</button>
-   
+    <button mat-button routerLink="report">report</button>   
+
+
+    <div>
+   <button (click)="show()" [routerLink]="['list']"[queryParams]=""> todo</button>
+   <button (click)="show()" [routerLink]="['list']" [queryParams]="{list:true}">done</button>
+    </div>
+
   </div>
   <div class="wrapper-activities"> 
     <router-outlet></router-outlet>
   </div>
 </div>
 
-<div class="progress" role="progressbar" aria-label="Basic example" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
-  example
-  <div class="progress-bar" style="width: 0%"></div>
-</div>
+
+<!-- <app-login></app-login> -->
+
 
 
 

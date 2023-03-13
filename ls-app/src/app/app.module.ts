@@ -27,14 +27,11 @@ import { ToDoListComponent } from './components/to-do-list/to-do-list.component'
 import { SortByPipe } from './pipes/sort-by.pipe';
 import { ActivitiesFilterPipe } from './pipes/activities-filter.pipe';
 import { ChartComponent } from './components/chart/chart.component';
+import { LoginComponent } from './components/login/login.component';
 
-import * as CanvasJSAngularChart from '../assets/canvasjs.angular.components'
+import * as CanvasJSAngularChart from '../assets/canvasjs.angular.components';
+import { ShowListComponent } from './components/show-list/show-list.component'
 var CanvasJSChart = CanvasJSAngularChart.CanvasJSChart;
-
-
-
-
-
 
 
 
@@ -49,7 +46,9 @@ var CanvasJSChart = CanvasJSAngularChart.CanvasJSChart;
     SortByPipe,
     ActivitiesFilterPipe,
     ChartComponent,
-    CanvasJSChart
+    CanvasJSChart,
+    LoginComponent,
+    ShowListComponent
   ],
   imports: [
     BrowserModule,

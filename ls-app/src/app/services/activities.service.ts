@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { IActivity } from '../model/activity';
 import { IPriority } from '../model/priority';
 import { priorities } from '../data/priorities';
+import { Observable, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +14,8 @@ export class ActivitiesService {
   totalList:number = 0
   toDoList:number = 0
   doneList:number = 0 
+
+  list:any[]
 
 
 
@@ -31,6 +34,25 @@ export class ActivitiesService {
     const list = this.priorityList.find(prList=> prList.value === priority)
     list.activities[index].description = value
   } 
+
+
+  getActivitiesTypeList(checked:boolean):Observable<any> {
+    console.log('service')
+    let list = []
+    this.priorityList.forEach(priority=>{
+      priority.activities.forEach(activity=>{
+        if(checked) {
+          if(activity.checked) list.push(activity)
+        }
+        if(!checked) {
+          if(!activity.checked) list.push(activity)
+        }
+      })
+    })
+    this.list = list
+    return of(this.list)
+
+  }
 
   getDoneActivities(){
     let completed = []
