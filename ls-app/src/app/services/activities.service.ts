@@ -4,6 +4,7 @@ import { IPriority } from '../model/priority';
 import { priorities } from '../data/priorities';
 import { Observable, of } from 'rxjs';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -11,12 +12,11 @@ export class ActivitiesService {
   
  
   priorityList:IPriority[] = priorities
-  totalList:number = 0
-  toDoList:number = 0
-  doneList:number = 0 
+ 
 
-  list:any[]
+  filter:boolean
 
+  constructor() {}
 
 
   addActivity(activity: IActivity):void {
@@ -36,61 +36,81 @@ export class ActivitiesService {
   } 
 
 
-  getActivitiesTypeList(checked:boolean):Observable<any> {
-    console.log('service')
-    let list = []
-    this.priorityList.forEach(priority=>{
-      priority.activities.forEach(activity=>{
-        if(checked) {
-          if(activity.checked) list.push(activity)
-        }
-        if(!checked) {
-          if(!activity.checked) list.push(activity)
-        }
-      })
-    })
-    this.list = list
-    return of(this.list)
+  // getActivitiesTypeList(checked:any) {
+  //   console.log('service')
+  //   this.exList = []
+  //   this.priorityList.forEach(priority=>{
+  //     priority.activities.forEach(activity=>{
+  //       if(checked) {
+  //         if(activity.checked) this.exList.push(activity)
+  //       }
+  //       if(!checked) {
+  //         if(!activity.checked) this.exList.push(activity)
+  //       }
+  //     })
+  //   })
+   
+    
+ 
 
-  }
+  // }
 
-  getDoneActivities(){
-    let completed = []
-    this.priorityList.forEach(item=>{
-      item.activities.forEach(el=>{
-        if(el.checked) completed.push(el)
-      })
-    })
-    return completed
-  }
 
-  getToDoActivities() {
-    let toDo = []
-    this.priorityList.forEach(item=>{
-      item.activities.forEach(el=>{
-        if(!el.checked) toDo.push(el)
-      })
-    })
-    return toDo
-  }
+
+  // getDoneActivities(){
+
+  //  return this.priorityList.filter(item=>item.activities.filter(activity=>activity.checked))
+
+
+    
+  // }
+
+  // getActivitiesType(checked) {
+  //   let list = []
+  //   this.priorityList.forEach(item=>{
+  //     item.activities.forEach(el=>{
+  //       if(checked) {
+  //         if(el.checked) list.push(el)
+  //       }
+  //       if(!checked) {
+  //         if(!el.checked) list.push(el)
+
+  //       }
+  
+  //     })
+  //   })
+  //   return list
+
+
+  // }
 
   getPercentage() {
     
-    this.totalList = 0
+    let totalLength = 0
+    let toDoLength = 0
+    let doneLength = 0
+
     this.priorityList.forEach(list=>{
-      this.totalList += list.activities.length
+      totalLength += list.activities.length
     })
 
-    this.toDoList = this.getToDoActivities().length
-    this.doneList = this.getDoneActivities().length
+    this.priorityList.forEach(priority=>{
+      priority.activities.forEach(activity=>{
+        if(activity.checked) toDoLength++
+        if(!activity.checked) doneLength++
+      })
+    }) 
+
+
+    console.log(doneLength, toDoLength, totalLength)
  
-    let calc1 = (this.toDoList/this.totalList)*100
-    let calc2 = (this.doneList/this.totalList)*100
+    let toDoPercentage = (toDoLength/totalLength)*100
+    let donePercentage = (doneLength/totalLength)*100
 
   const chartOptions = {
 		animationEnabled: true,
 		title: {
-		  text: "Activities"
+		  text: "Activities Report"
 		},
 		data: [{
 		  type: "pie",
@@ -98,8 +118,8 @@ export class ActivitiesService {
 		  indexLabel: "{name}: {y}",
 		  yValueFormatString: "#,###.##'%'",
 		  dataPoints: [
-			{ y: calc1, name: "to do" },
-			{ y: calc2, name: "Electronics" }
+			{ y: toDoPercentage, name: "to do" },
+			{ y: donePercentage, name: "done" }
 		  ]
 		}]
 	}

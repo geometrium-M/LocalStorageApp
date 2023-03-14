@@ -9,14 +9,19 @@ import { ActivitiesService } from 'src/app/services/activities.service';
 export class ChartComponent {
 
   chartOptions:any
-  totalList:number = 0
-  toDoList:number = 0
-  doneList:number = 0
+  totalList:number = 1
+  toDoPercentage
+  donePercentage
   constructor(private activitiesService:ActivitiesService) {
 
     this.chartOptions = this.activitiesService.getPercentage()
-    this.totalList = this.activitiesService.totalList
-    this.toDoList = this.activitiesService.toDoList
-    this.doneList = this.activitiesService.doneList
+
+    console.log(this.chartOptions.data[0].dataPoints)
+    this.toDoPercentage = this.chartOptions.data[0].dataPoints[0].y
+    this.donePercentage = this.chartOptions.data[0].dataPoints[1].y
+ 
+    console.log(this.toDoPercentage)
+
+
   }
 }

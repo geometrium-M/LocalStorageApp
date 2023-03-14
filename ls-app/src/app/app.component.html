@@ -5,21 +5,18 @@
   <div class="wrapper-actions">
     <app-add-activity></app-add-activity>
     <button mat-button routerLink="">all lists</button>
-    <button mat-button routerLink="done">done list</button>
-    <button mat-button routerLink="to-do"> to do list</button>
+    <button mat-button (click)="changeListType()" routerLink= 'list'>to do</button>
+    <button mat-button (click)="changeListType()" routerLink='list'>done</button>
     <button mat-button routerLink="report">report</button>   
-
-
-    <div>
-   <button (click)="show()" [routerLink]="['list']"[queryParams]=""> todo</button>
-   <button (click)="show()" [routerLink]="['list']" [queryParams]="{list:true}">done</button>
-    </div>
-
+    <button type="button" class="btn btn-primary">Primary</button>
   </div>
   <div class="wrapper-activities"> 
     <router-outlet></router-outlet>
+
   </div>
 </div>
+
+
 
 
 <!-- <app-login></app-login> -->

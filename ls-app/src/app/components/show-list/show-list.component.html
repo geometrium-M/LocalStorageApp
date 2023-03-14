@@ -1,2 +1,35 @@
-<div *ngFor="let item of list | async">
-  {{item.description}} <span>{{item.checked}}</span></div>
+
+    <div class="wrapper">
+      <form action="">
+        <mat-form-field class="example-full-width">
+          <mat-label> <mat-icon>search</mat-icon>Filter actions</mat-label>
+          <input matInput [(ngModel)]="activitiesFilter" [ngModelOptions]="{standalone: true}">
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>sort by</mat-label>
+          <mat-select #select>
+            <mat-option *ngFor="let option of optionsList" [value]="option">
+              {{option}}
+            </mat-option> 
+          </mat-select>
+        </mat-form-field>
+      </form>
+    
+      <div>
+        <mat-card>
+          <mat-card-title>List</mat-card-title>
+          <div>{{select.value}}</div>
+          <mat-card-content class="items">
+             <div *ngFor="let activity of activitiesList | activitiesCheckedFilter : activitiesService.filter | activitiesFilter:activitiesFilter | sortBy:select.value"> 
+              <div class="item">
+                <div> {{activity.description}}</div>
+                <div>{{activity.date | date:'short'}}</div>
+                <div>{{activity.checked}} <span>{{activity.level}}</span></div>
+              </div>
+            </div>
+          </mat-card-content>
+        </mat-card> 
+      </div>
+    </div>
+
+  

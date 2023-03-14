@@ -20,16 +20,14 @@ export class ActivitiesComponent implements OnInit {
 
   constructor(private activitiesService:ActivitiesService){
    this.listOfPriority = this.activitiesService.priorityList
-  // this.listOfPriority = priorities
+
   }
 
 
   ngOnInit(): void {}
 
 
-  showCompleted() {
-    this.activitiesService.getDoneActivities()
-  }
+
 
 
   cdkDropListConnectedTo() {
