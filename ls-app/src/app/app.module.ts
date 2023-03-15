@@ -30,7 +30,8 @@ import { LoginComponent } from './components/login/login.component';
 
 import * as CanvasJSAngularChart from '../assets/canvasjs.angular.components';
 import { ShowListComponent } from './components/show-list/show-list.component';
-import { ActivitiesCheckedFilterPipe } from './pipes/activities-checked-filter.pipe'
+import { ActivitiesCheckedFilterPipe } from './pipes/activities-checked-filter.pipe';
+import { RegisterComponent } from './components/register/register.component'
 var CanvasJSChart = CanvasJSAngularChart.CanvasJSChart;
 
 
@@ -47,7 +48,8 @@ var CanvasJSChart = CanvasJSAngularChart.CanvasJSChart;
     CanvasJSChart,
     LoginComponent,
     ShowListComponent,
-    ActivitiesCheckedFilterPipe
+    ActivitiesCheckedFilterPipe,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,

@@ -2,7 +2,7 @@
 
 :host {
   display: flex;
-  justify-content: center;
+  
   margin: 100px 0px;
 }
 
@@ -30,4 +30,9 @@ mat-card-content {
 .button {
   display: flex;
   justify-content: flex-end;
+}
+
+mat-card {
+  width: 40%;
+  display: inline-block;
 }
