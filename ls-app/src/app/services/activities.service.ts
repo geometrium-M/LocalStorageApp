@@ -2,7 +2,11 @@ import { Injectable } from '@angular/core';
 import { IActivity } from '../model/activity';
 import { IPriority } from '../model/priority';
 import { priorities } from '../data/priorities';
-import { Observable, of } from 'rxjs';
+import { BehaviorSubject, Observable, of } from 'rxjs';
+
+import {pr} from '../data/priorities'
+
+import { AccountService } from './account.service';
 
 
 @Injectable({
@@ -10,120 +14,56 @@ import { Observable, of } from 'rxjs';
 })
 export class ActivitiesService {
   
- 
-  priorityList:IPriority[] = priorities
- 
-
-  filter:boolean
-
-  constructor() {}
-
-
-  addActivity(activity: IActivity):void {
-
-    const priority = this.priorityList.find(p=>p.id === activity.level)
-    if(priority) priority.activities.push(activity)
-  }
-
-  deleteActivity(priority,index):void {
-    const list = this.priorityList.find(prList=> prList.value === priority)
-    list.activities.splice(index,1)
-  }
-
-  updateActivity(priority, index,value) {
-    const list = this.priorityList.find(prList=> prList.value === priority)
-    list.activities[index].description = value
-  } 
-
-
-  // getActivitiesTypeList(checked:any) {
-  //   console.log('service')
-  //   this.exList = []
-  //   this.priorityList.forEach(priority=>{
-  //     priority.activities.forEach(activity=>{
-  //       if(checked) {
-  //         if(activity.checked) this.exList.push(activity)
-  //       }
-  //       if(!checked) {
-  //         if(!activity.checked) this.exList.push(activity)
-  //       }
-  //     })
-  //   })
-   
-    
- 
-
-  // }
-
-
-
-  // getDoneActivities(){
-
-  //  return this.priorityList.filter(item=>item.activities.filter(activity=>activity.checked))
-
-
-    
-  // }
-
-  // getActivitiesType(checked) {
-  //   let list = []
-  //   this.priorityList.forEach(item=>{
-  //     item.activities.forEach(el=>{
-  //       if(checked) {
-  //         if(el.checked) list.push(el)
-  //       }
-  //       if(!checked) {
-  //         if(!el.checked) list.push(el)
-
-  //       }
+private prioritiesSubject: BehaviorSubject<any>;
+public priorities: Observable<any>;
   
-  //     })
-  //   })
-  //   return list
+filter:boolean
 
+constructor(private accountService:AccountService) 
+    {
+      if(localStorage.hasOwnProperty('priorities')){
+        this.prioritiesSubject = new BehaviorSubject(JSON.parse(localStorage.getItem('priorities')!))
+      } 
+      else {
+        this.prioritiesSubject = new BehaviorSubject(pr)
+      } 
+      this.priorities = this.prioritiesSubject.asObservable();
+    }
 
-  // }
+public get prioritiesValue() {
+  return this.prioritiesSubject.value
+}
 
-  getPercentage() {
-    
-    let totalLength = 0
-    let toDoLength = 0
-    let doneLength = 0
+addActivity(activity: IActivity):void {
 
-    this.priorityList.forEach(list=>{
-      totalLength += list.activities.length
-    })
+  let priorityList = this.prioritiesValue
 
-    this.priorityList.forEach(priority=>{
-      priority.activities.forEach(activity=>{
-        if(activity.checked) toDoLength++
-        if(!activity.checked) doneLength++
-      })
-    }) 
+  if(!localStorage.hasOwnProperty('priorities')) {
+    priorityList.id = this.accountService.userValue.id
+  }  
+  const priority = priorityList.priorities.find(p=>p.id === activity.level)
 
-
-    console.log(doneLength, toDoLength, totalLength)
- 
-    let toDoPercentage = (toDoLength/totalLength)*100
-    let donePercentage = (doneLength/totalLength)*100
-
-  const chartOptions = {
-		animationEnabled: true,
-		title: {
-		  text: "Activities Report"
-		},
-		data: [{
-		  type: "pie",
-		  startAngle: -90,
-		  indexLabel: "{name}: {y}",
-		  yValueFormatString: "#,###.##'%'",
-		  dataPoints: [
-			{ y: toDoPercentage, name: "to do" },
-			{ y: donePercentage, name: "done" }
-		  ]
-		}]
-	}
-  return chartOptions	
+    if(priority) priority.activities.push(activity) 
+    localStorage.setItem('priorities', JSON.stringify(priorityList))
   }
+
+deleteActivity(priority,index):void {
+  const list = this.prioritiesValue.priorities.find(prList=> prList.value === priority)
+  list.activities.splice(index,1)
+  localStorage.setItem('priorities', JSON.stringify(this.prioritiesValue))
+}
+
+updateActivity(priority, index,value) {
+  const list = this.prioritiesValue.priorities.find(prList=> prList.value === priority)
+  list.activities[index].description = value
+  localStorage.setItem('priorities', JSON.stringify(this.prioritiesValue))
+}
+
+updateActivitiesList(list) {
+
+  this.prioritiesValue.priorities = list
+  localStorage.setItem('priorities', JSON.stringify(this.prioritiesValue) )
+}
   
 }
+

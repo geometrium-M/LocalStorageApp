@@ -13,6 +13,10 @@ p {
   width: 30%;
 
 }
+.card {
+  --bs-card-border-width: 0;
+ 
+}
 
 mat-card {
 

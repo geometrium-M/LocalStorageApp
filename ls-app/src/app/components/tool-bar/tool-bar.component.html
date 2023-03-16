@@ -1,5 +1,22 @@
 <mat-toolbar>
   <mat-toolbar-row>
     <span>To Do Application</span>
+
+    <div class="user-info">
+      <div>{{accountService.userValue.firstName}}</div>
+      <div>{{accountService.userValue.lastName}}</div>
+      <div class="user-img">
+        <img src="../../../assets/avatar.png" alt="avatar">
+        <span class="user-online"></span>
+      </div>
+      
+   
+      <div>
+        <button (click)="show = !show"> 
+          <mat-icon [ngClass]="{'rotate':!show}" style="color:white">arrow_drop_down</mat-icon>
+        </button>
+      </div>
+    </div>
   </mat-toolbar-row>
+
 </mat-toolbar>

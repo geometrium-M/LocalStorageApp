@@ -1,3 +1,45 @@
 mat-toolbar {
   background-color: rgb(71, 120, 194);
 } 
+mat-toolbar-row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.user-info {
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.user-info div {
+  margin-right: 10px;
+}
+.user-img {
+  position: relative;
+}
+
+.user-img img  {
+  width: 50px;
+  height: 50px;
+  border-radius: 100%;
+ 
+  
+}
+.user-online {
+  position: absolute;
+  right: 0;
+  width: 15px;
+  height:15px;
+  background-color: rgb(33, 206, 33);
+  border-radius: 100%;
+}
+
+button {
+  border: none;
+  background-color: inherit;
+}
+
+.rotate {
+  rotate: 180deg;
+}

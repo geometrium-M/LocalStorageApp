@@ -14,14 +14,6 @@ export class AccountService {
   public user: Observable<User | null>;
 
 
-  // userType:User = {
-  //   firstName: null,
-  //   lastName: null,
-  //   userName:null,
-  //   password:null,
-  //   id:null
-  // }
-
   constructor(private router:Router) {
 
     this.userSubject = new BehaviorSubject(JSON.parse(localStorage.getItem('user')!));

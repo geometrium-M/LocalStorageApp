@@ -16,10 +16,12 @@ export class ActivitiesComponent implements OnInit {
 
 
 
-  listOfPriority: IPriority[] 
+  listOfPriority = []
 
   constructor(private activitiesService:ActivitiesService){
-   this.listOfPriority = this.activitiesService.priorityList
+    
+  this.listOfPriority = this.activitiesService.prioritiesValue.priorities
+  
 
   }
 
@@ -47,6 +49,10 @@ export class ActivitiesComponent implements OnInit {
     }
 
     console.log(event.container.data[event.currentIndex])
+
+    console.log(this.listOfPriority)
+
+    this.activitiesService.updateActivitiesList(this.listOfPriority)
   }
 
 

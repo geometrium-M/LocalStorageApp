@@ -11,11 +11,8 @@ export class AlertService {
   error(message:string) {
     this.error$.next(message)
   }
-
-  getMessage():Observable<any> {
-    return this.error$.asObservable()
-
-  }
-
   
+  clear() {
+    this.error$.next('')
+  }
 }

@@ -1,0 +1,10 @@
+button {
+  border: none;
+  background-color: #f8d7da;
+}
+
+.alert {
+  width: 40%;
+  display: flex;
+  justify-content: space-between;
+}

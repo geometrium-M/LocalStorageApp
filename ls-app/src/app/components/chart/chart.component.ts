@@ -14,7 +14,7 @@ export class ChartComponent {
   donePercentage
   constructor(private activitiesService:ActivitiesService) {
 
-    this.chartOptions = this.activitiesService.getPercentage()
+
 
     console.log(this.chartOptions.data[0].dataPoints)
     this.toDoPercentage = this.chartOptions.data[0].dataPoints[0].y

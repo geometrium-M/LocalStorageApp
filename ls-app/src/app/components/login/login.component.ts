@@ -4,6 +4,7 @@ import { AccountService } from 'src/app/services/account.service';
 import { Router } from '@angular/router';
 
 import { User } from 'src/app/model/user';
+import { AlertService } from 'src/app/services/alert.service';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +13,7 @@ import { User } from 'src/app/model/user';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private fb:FormBuilder, private accoutService:AccountService, private router:Router){}
+  constructor(private fb:FormBuilder, private accoutService:AccountService, private router:Router, private alert:AlertService){}
 
   form:FormGroup
   sumbit:boolean
@@ -33,8 +34,8 @@ export class LoginComponent implements OnInit {
     let res = this.accoutService.login(userName, password)
     console.log(res)
 
-    if(res) this.router.navigate(['report'])
-    if(!res) console.log('not')
+    if(res) this.router.navigate([''])
+    if(!res) this.alert.error('not exist')
  
   }
   
