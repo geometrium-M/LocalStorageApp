@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AccountService } from 'src/app/services/account.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-tool-bar',
@@ -9,6 +10,15 @@ import { AccountService } from 'src/app/services/account.service';
 export class ToolBarComponent {
   show:boolean = true
 
-  constructor(public accountService:AccountService){}
+  constructor(public accountService:AccountService, private router:Router, private route:ActivatedRoute){}
+  
+  logOut() {
+    localStorage.removeItem('user')
+    window.location.reload()
+    // this.router.navigate([this.router.url])
+    // console.log(this.router.url)
+    // console.log('dd')
+
+  }
 
 }

@@ -7,24 +7,28 @@ mat-toolbar-row {
 }
 
 .user-info {
+  position: relative;
 
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-.user-info div {
+.user-data {
+  display: flex;
+
+}
+.user-data div {
   margin-right: 10px;
 }
 .user-img {
   position: relative;
+  margin-right: 0;
 }
 
 .user-img img  {
   width: 50px;
   height: 50px;
   border-radius: 100%;
- 
-  
 }
 .user-online {
   position: absolute;
@@ -35,9 +39,45 @@ mat-toolbar-row {
   border-radius: 100%;
 }
 
+.user-options {
+  position: absolute;
+  top: 105%;
+  left: -30%; 
+  width: 150px;
+  height: 100px;
+  background-color: white;
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;;
+  z-index: 10;
+
+}
+.user-options::before {
+  position: absolute;
+  top: -40%;
+  left: 40%;
+  content: '';
+  width: 0; 
+  height: 0; 
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 10px solid white;
+  margin: 2rem;
+}
+
+.user-options button:hover {
+
+  background-color: rgb(223, 216, 216);
+
+}
+
 button {
+  width: 100%;
   border: none;
   background-color: inherit;
+  border-radius: 10px;
+  margin: 0;
+  padding: 0;
 }
 
 .rotate {

@@ -12,6 +12,7 @@ import { AuthGuard } from './guards/auth.guard';
 
 
 const routes: Routes = [
+
   {
     path:'', component: ActivitiesComponent, canActivate: [AuthGuard]
   },
@@ -26,12 +27,13 @@ const routes: Routes = [
   },
   {
     path:'register', component: RegisterComponent
-  }
+  },
+
 
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {onSameUrlNavigation: 'reload'})],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
