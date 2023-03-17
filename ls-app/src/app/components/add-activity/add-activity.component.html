@@ -1,5 +1,5 @@
 <div class="wrapper-form">
-  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <form [formGroup]="form" >
     <p>
       <mat-form-field>
         <mat-label>enter activity</mat-label>
@@ -18,7 +18,7 @@
       </mat-form-field>
     </p>
     <div class="button">
-      <button type="submit"mat-button>Add</button>
+      <button type="submit"mat-button (click)="onSubmit($event)">Add</button>
   
     </div>
   </form>

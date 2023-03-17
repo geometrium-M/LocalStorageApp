@@ -9,10 +9,10 @@ export class SortByPipe implements PipeTransform {
 
   transform(list: IActivity[],string:string): IActivity[] {
     list.sort((a,b)=>{
-      if(string === 'priority desc') return b.level - a.level
-      if(string === 'priority asc') return a.level - b.level
-      if(string === 'date desc') return b.date.getTime() - a.date.getTime()
-      if(string === 'date asc') return a.date.getTime() - b.date.getTime()
+      if(string === 'priority descending') return b.level - a.level
+      if(string === 'priority ascending') return a.level - b.level
+      if(string === 'date descending') return new Date(b.date).getTime() - new Date(a.date).getTime()
+      if(string === 'date ascending') return new Date(a.date).getTime() - new Date(b.date).getTime()
       else return 0
     })
     return list

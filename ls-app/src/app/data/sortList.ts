@@ -1,1 +1,1 @@
-export const optionsList = ['date asc', 'date desc', 'priority asc', 'priority desc']
+export const optionsList = ['date ascending', 'date descending', 'priority ascending', 'priority descending']

@@ -11,11 +11,21 @@ import { AccountService } from './services/account.service';
 export class AppComponent {
   title = 'ls-app'; 
 
-  constructor(public acrivityService: ActivitiesService, public accoutService:AccountService ) {
+  constructor(public activityService: ActivitiesService, public accoutService:AccountService ) {
     console.log(accoutService.userValue)
   }
 
   changeListType() {
-    this.acrivityService.filter = !this.acrivityService.filter
+    this.activityService.filter = !this.activityService.filter
+
+    console.log(this.activityService.filter)
+  }
+  showToDo() {
+    this.activityService.filter = false
+    console.log(this.activityService.filter)
+  }
+  showDone() {
+    this.activityService.filter = true
+    console.log(this.activityService.filter)
   }
 }

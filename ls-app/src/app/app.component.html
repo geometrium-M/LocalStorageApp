@@ -8,8 +8,8 @@
   <div class="wrapper-actions" *ngIf="accoutService.userValue">
     <app-add-activity></app-add-activity>
     <button mat-button routerLink="">all lists</button>
-    <button mat-button (click)="changeListType()" routerLink= 'list'>to do</button>
-    <button mat-button (click)="changeListType()" routerLink='list'>done</button>
+    <button mat-button (click)="showToDo()" routerLink= 'list'>to do</button>
+    <button mat-button (click)="showDone()" routerLink='list'>done</button>
     <button mat-button routerLink="report">report</button>   
   </div>
   <div class="wrapper-activities"> 

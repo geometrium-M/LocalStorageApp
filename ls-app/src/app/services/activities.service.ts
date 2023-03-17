@@ -18,34 +18,76 @@ private prioritiesSubject: BehaviorSubject<any>;
 public priorities: Observable<any>;
   
 filter:boolean
+id:any
 
 constructor(private accountService:AccountService) 
     {
-      if(localStorage.hasOwnProperty('priorities')){
-        this.prioritiesSubject = new BehaviorSubject(JSON.parse(localStorage.getItem('priorities')!))
-      } 
+      console.log(this.accountService.userValue)
+
+      if(localStorage.hasOwnProperty('prioritiesList')) {
+        const list = JSON.parse(localStorage.getItem('prioritiesList'))
+        const priorities = list.find((item)=>item.id === this.id)
+        if(priorities) {
+          this.prioritiesSubject = new BehaviorSubject(priorities)
+        } 
+        else {
+          console.log('not found', accountService.userValue)
+          this.prioritiesSubject = new BehaviorSubject(pr)
+        }
+      }
       else {
         this.prioritiesSubject = new BehaviorSubject(pr)
-      } 
+      }
       this.priorities = this.prioritiesSubject.asObservable();
     }
+
+
+
+
+
+
+
+
 
 public get prioritiesValue() {
   return this.prioritiesSubject.value
 }
 
-addActivity(activity: IActivity):void {
+updateId(id) {
+  this.id = id
+}
 
+
+addActivity(activity:any):void {
   let priorityList = this.prioritiesValue
+  let list =[]
 
-  if(!localStorage.hasOwnProperty('priorities')) {
-    priorityList.id = this.accountService.userValue.id
-  }  
   const priority = priorityList.priorities.find(p=>p.id === activity.level)
+  if(priority) priority.activities.push(activity)
 
-    if(priority) priority.activities.push(activity) 
-    localStorage.setItem('priorities', JSON.stringify(priorityList))
+  if(!localStorage.hasOwnProperty('prioritiesList')) {
+    priorityList.id = this.accountService.userValue.id
+    list.push(priorityList)
+  }  
+
+  if(localStorage.hasOwnProperty('prioritiesList')) {
+    list = JSON.parse(localStorage.getItem('prioritiesList'))
+    const priorities = list.find((item)=>item.id === this.accountService.userValue.id)
+
+    if(priorities) {
+      const indx = list.indexOf(priorities)
+      list[indx] = priorityList
+    }
+    if(!priorities) {  
+      priorityList.id = this.accountService.userValue.id
+      list.push(priorityList)
+    }
+
   }
+  localStorage.setItem('prioritiesList', JSON.stringify(list))
+}
+
+
 
 deleteActivity(priority,index):void {
   const list = this.prioritiesValue.priorities.find(prList=> prList.value === priority)
@@ -54,15 +96,24 @@ deleteActivity(priority,index):void {
 }
 
 updateActivity(priority, index,value) {
+  
   const list = this.prioritiesValue.priorities.find(prList=> prList.value === priority)
   list.activities[index].description = value
-  localStorage.setItem('priorities', JSON.stringify(this.prioritiesValue))
+  let arr = JSON.parse(localStorage.getItem('prioritiesList')) 
+  let el =  arr.find((item)=>item.id === this.accountService.userValue.id)
+  const indx = arr.indexOf(el)
+  arr[indx] = this.prioritiesValue
+  localStorage.setItem('prioritiesList', JSON.stringify(arr))
 }
 
-updateActivitiesList(list) {
+updateActivitiesList() {
+  let arr = JSON.parse(localStorage.getItem('prioritiesList'))
+  let el =  arr.find((item)=>item.id === this.accountService.userValue.id)
 
-  this.prioritiesValue.priorities = list
-  localStorage.setItem('priorities', JSON.stringify(this.prioritiesValue) )
+  const indx = arr.indexOf(el)
+  arr[indx] = this.prioritiesValue
+  
+  localStorage.setItem('prioritiesList', JSON.stringify(arr) )
 }
   
 }

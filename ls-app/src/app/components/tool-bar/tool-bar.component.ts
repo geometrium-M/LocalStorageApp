@@ -12,13 +12,9 @@ export class ToolBarComponent {
 
   constructor(public accountService:AccountService, private router:Router, private route:ActivatedRoute){}
   
-  logOut() {
+  logOut(){
     localStorage.removeItem('user')
-    window.location.reload()
-    // this.router.navigate([this.router.url])
-    // console.log(this.router.url)
-    // console.log('dd')
-
+    window.location.replace('')
   }
 
 }

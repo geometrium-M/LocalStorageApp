@@ -14,17 +14,19 @@
           </mat-select>
         </mat-form-field>
       </form>
-    
-      <div>
+      <div class="title">
+        <div *ngIf="!activitiesService.filter; else done">Activities To Do List</div>
+        <ng-template #done>Activities Done List</ng-template>
+      </div>
+      <div class="wrapper_list">
         <mat-card>
-          <mat-card-title>List</mat-card-title>
-          <div>{{select.value}}</div>
           <mat-card-content class="items">
              <div *ngFor="let activity of activitiesList | activitiesCheckedFilter : activitiesService.filter | activitiesFilter:activitiesFilter | sortBy:select.value"> 
               <div class="item">
-                <div> {{activity.description}}</div>
-                <div>{{activity.date | date:'short'}}</div>
-                <div>{{activity.checked}} <span>{{activity.level}}</span></div>
+           
+                <div class="item_description"> {{activity.description}}</div>
+                <div class="item_date">{{activity.date | date:'short'}}</div>
+           
               </div>
             </div>
           </mat-card-content>

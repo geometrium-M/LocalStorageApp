@@ -37,7 +37,7 @@ export class AddActivityComponent implements OnInit {
   return this.form.get('selectedLevel')
 }
 
- onSubmit(){
+ onSubmit(event){
   if(this.form.valid) {
     const activity:IActivity = {
       description:this.form.value.activity,
@@ -47,8 +47,11 @@ export class AddActivityComponent implements OnInit {
     }
     this.activitiesService.addActivity(activity)
 
+    this.form.reset()
+    event.preventDefault()
   }
-  this.router.navigate([''])
+
+
 
  }
 

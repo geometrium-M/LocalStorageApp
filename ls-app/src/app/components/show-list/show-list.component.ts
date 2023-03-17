@@ -21,6 +21,8 @@ export class ShowListComponent {
   constructor(public activitiesService:ActivitiesService) {}
 
   ngOnInit() {    
-    // this.activitiesService.prioritiesValue().subscribe(obj=> this.activitiesList = obj.priorities)
+    this.activitiesList = this.activitiesService.prioritiesValue.priorities
+    console.log(this.activitiesList)
   }
 }
+  

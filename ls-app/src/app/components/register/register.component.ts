@@ -2,6 +2,7 @@ import { Component,OnInit } from '@angular/core';
 import { FormGroup,FormBuilder,Validators } from '@angular/forms';
 import { AccountService } from 'src/app/services/account.service';
 import { User } from 'src/app/model/user';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -9,7 +10,7 @@ import { User } from 'src/app/model/user';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit{
-  constructor(private fb:FormBuilder, private accountService:AccountService){}
+  constructor(private fb:FormBuilder, private accountService:AccountService, private router:Router){}
 
   form:FormGroup
 
@@ -34,6 +35,11 @@ export class RegisterComponent implements OnInit{
     console.log(this.form.value)
     if(this.form.valid)
     this.accountService.register(this.form.value)
+    setTimeout(()=>{
+      this.router.navigate([''])
+
+    },3000)
+
   }
 
 }

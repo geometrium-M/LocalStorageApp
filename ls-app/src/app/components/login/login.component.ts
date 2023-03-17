@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 
 import { User } from 'src/app/model/user';
 import { AlertService } from 'src/app/services/alert.service';
+import { ActivitiesService } from 'src/app/services/activities.service';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +14,7 @@ import { AlertService } from 'src/app/services/alert.service';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private fb:FormBuilder, private accoutService:AccountService, private router:Router, private alert:AlertService){}
+  constructor(private fb:FormBuilder, private accoutService:AccountService, private router:Router, private alert:AlertService, private activitiesService:ActivitiesService){}
 
   form:FormGroup
   sumbit:boolean
@@ -33,8 +34,12 @@ export class LoginComponent implements OnInit {
     let password = this.form.value.password
     let res = this.accoutService.login(userName, password)
     console.log(res)
-
-    if(res) this.router.navigate([''])
+    this.activitiesService.updateId(this.accoutService.userValue.id)
+    
+    this.router.navigate([''])
+    
+ 
+  
     if(!res) this.alert.error('not exist')
  
   }

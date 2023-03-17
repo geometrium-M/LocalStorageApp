@@ -3,6 +3,7 @@ import { ActivitiesService } from 'src/app/services/activities.service';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { IPriority } from 'src/app/model/priority';
 import { priorities } from 'src/app/data/priorities';
+import { AccountService } from 'src/app/services/account.service';
 
 
 
@@ -18,15 +19,22 @@ export class ActivitiesComponent implements OnInit {
 
   listOfPriority = []
 
-  constructor(private activitiesService:ActivitiesService){
-    
-  this.listOfPriority = this.activitiesService.prioritiesValue.priorities
-  
+  constructor(private activitiesService:ActivitiesService, private accountService: AccountService){
+    console.log('comp')
 
+    this.activitiesService.updateId(this.accountService.userValue.id)
+    
+
+  
   }
 
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.listOfPriority = this.activitiesService.prioritiesValue.priorities
+    console.log(this.listOfPriority)
+
+
+  }
 
 
 
@@ -52,7 +60,7 @@ export class ActivitiesComponent implements OnInit {
 
     console.log(this.listOfPriority)
 
-    this.activitiesService.updateActivitiesList(this.listOfPriority)
+    this.activitiesService.updateActivitiesList()
   }
 
 
