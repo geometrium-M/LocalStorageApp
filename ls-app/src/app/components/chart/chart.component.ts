@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { ActivitiesService } from 'src/app/services/activities.service';
+import { ChartService } from 'src/app/services/chart.service';
+import { AlertService } from 'src/app/services/alert.service';
 
 @Component({
   selector: 'app-chart',
@@ -7,21 +8,26 @@ import { ActivitiesService } from 'src/app/services/activities.service';
   styleUrls: ['./chart.component.css']
 })
 export class ChartComponent {
+  date = new Date()
+
 
   chartOptions:any
-  totalList:number = 1
   toDoPercentage
   donePercentage
-  constructor(private activitiesService:ActivitiesService) {
+
+  constructor(public chartService:ChartService, public alert:AlertService) {
+    
+    
+    console.log(this.chartService.getPercentage())
+    this.chartOptions = this.chartService.getPercentage()
 
 
+    if(this.chartOptions) {
+      this.toDoPercentage = this.chartOptions.data[0].dataPoints[0].y
+      this.donePercentage = this.chartOptions.data[0].dataPoints[1].y
+    }
 
-    console.log(this.chartOptions.data[0].dataPoints)
-    this.toDoPercentage = this.chartOptions.data[0].dataPoints[0].y
-    this.donePercentage = this.chartOptions.data[0].dataPoints[1].y
- 
-    console.log(this.toDoPercentage)
-
+    if(!this.chartOptions) this.alert.message('activities not found')
 
   }
 }

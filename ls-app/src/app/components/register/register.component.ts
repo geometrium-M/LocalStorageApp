@@ -1,7 +1,7 @@
 import { Component,OnInit } from '@angular/core';
 import { FormGroup,FormBuilder,Validators } from '@angular/forms';
 import { AccountService } from 'src/app/services/account.service';
-import { User } from 'src/app/model/user';
+import { IUser } from 'src/app/model/user';
 import { Router } from '@angular/router';
 
 @Component({
@@ -26,20 +26,10 @@ export class RegisterComponent implements OnInit{
   }
 
   onSubmit() {
-    // console.log(this.accountService.register())
-    // console.log('register')
-    // this.accountService.register()
-
-   
     this.form.get('id').setValue(Date.now())
     console.log(this.form.value)
     if(this.form.valid)
     this.accountService.register(this.form.value)
-    setTimeout(()=>{
-      this.router.navigate([''])
-
-    },3000)
-
   }
 
 }

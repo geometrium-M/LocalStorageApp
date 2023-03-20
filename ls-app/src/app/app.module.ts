@@ -32,7 +32,8 @@ import * as CanvasJSAngularChart from '../assets/canvasjs.angular.components';
 import { ShowListComponent } from './components/show-list/show-list.component';
 import { ActivitiesCheckedFilterPipe } from './pipes/activities-checked-filter.pipe';
 import { RegisterComponent } from './components/register/register.component';
-import { AlertComponent } from './components/alert/alert.component'
+import { AlertComponent } from './components/alert/alert.component';
+import { DeletedActivitiesComponent } from './deleted-activities/deleted-activities.component'
 var CanvasJSChart = CanvasJSAngularChart.CanvasJSChart;
 
 
@@ -51,7 +52,8 @@ var CanvasJSChart = CanvasJSAngularChart.CanvasJSChart;
     ShowListComponent,
     ActivitiesCheckedFilterPipe,
     RegisterComponent,
-    AlertComponent
+    AlertComponent,
+    DeletedActivitiesComponent
   ],
   imports: [
     BrowserModule,

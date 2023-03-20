@@ -7,6 +7,7 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 
 import { ShowListComponent } from './components/show-list/show-list.component';
+import { DeletedActivitiesComponent } from './deleted-activities/deleted-activities.component';
 
 import { AuthGuard } from './guards/auth.guard';
 
@@ -28,6 +29,9 @@ const routes: Routes = [
   {
     path:'register', component: RegisterComponent
   },
+  {
+    path:'deleted', component:DeletedActivitiesComponent
+  }
 
 
 ];

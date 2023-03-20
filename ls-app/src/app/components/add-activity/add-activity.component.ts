@@ -51,6 +51,8 @@ export class AddActivityComponent implements OnInit {
     event.preventDefault()
   }
 
+  this.router.navigate([''])
+
 
 
  }

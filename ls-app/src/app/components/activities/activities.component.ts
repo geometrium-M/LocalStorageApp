@@ -19,25 +19,15 @@ export class ActivitiesComponent implements OnInit {
 
   listOfPriority = []
 
-  constructor(private activitiesService:ActivitiesService, private accountService: AccountService){
-    console.log('comp')
-
-    this.activitiesService.updateId(this.accountService.userValue.id)
-    
-
-  
+  constructor(private accountService: AccountService ,private activitiesService:ActivitiesService){
+    console.log('init')
+    this.listOfPriority = this.activitiesService.prioritiesValue.priorities
+    console.log(this.listOfPriority)  
   }
-
 
   ngOnInit(): void {
-    this.listOfPriority = this.activitiesService.prioritiesValue.priorities
-    console.log(this.listOfPriority)
-
 
   }
-
-
-
 
 
   cdkDropListConnectedTo() {
@@ -55,11 +45,6 @@ export class ActivitiesComponent implements OnInit {
         event.currentIndex);
        event.container.data[event.currentIndex].level = event.container.element.nativeElement.id
     }
-
-    console.log(event.container.data[event.currentIndex])
-
-    console.log(this.listOfPriority)
-
     this.activitiesService.updateActivitiesList()
   }
 

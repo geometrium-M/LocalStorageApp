@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject, map, Observable } from 'rxjs';
 
-import { User } from '../model/user';
+
+import { IUser } from '../model/user';
 
 @Injectable({
   providedIn: 'root'
@@ -10,17 +11,24 @@ import { User } from '../model/user';
 export class AccountService {
 
   
-  private userSubject: BehaviorSubject<User | null>;
-  public user: Observable<User | null>;
-  id:any
+  public userSubject: BehaviorSubject<IUser | null>;
+  public user: Observable<IUser | null>;
+  // id:any
+
+
+
 
 
   constructor(private router:Router) {
-    console.log('user')
+    console.log('user init')
     this.userSubject = new BehaviorSubject(JSON.parse(localStorage.getItem('user')!));
     this.user = this.userSubject.asObservable();
 
-    console.log('init',this.user)
+    // console.log('init',this.user)
+
+   
+
+
 
 
    
@@ -30,12 +38,14 @@ export class AccountService {
     
    
   }
-
+public get userV(){
+  return this.userSubject.asObservable()
+}
   public get userValue() {
     return this.userSubject.value;
   }
 
-  register(user:User) {
+  register(user:IUser) {
     if(!localStorage.hasOwnProperty('users')) {
       console.log('server')
       let users = []
@@ -48,17 +58,17 @@ export class AccountService {
       localStorage.setItem('users', JSON.stringify(users))
       
     }
-    localStorage.setItem('user', JSON.stringify(user))
+
+
     this.router.navigate([''])
+    
   }
 
   login(userName,password) {
-    let result = false
- 
-    
+
+
       let users = JSON.parse(localStorage.getItem('users'))
-      console.log(users)
-      if(!users) {return result}
+  
 
       if(users) {
         let userFind = users.find(us=>{ 
@@ -68,17 +78,16 @@ export class AccountService {
         if(userFind) {
           this.userSubject.next(userFind);
           localStorage.setItem('user', JSON.stringify(userFind))
-         
-          console.log(this.userSubject)
-          result = true
-          return result
         }
-        if(!userFind) return result
+
+        if(!userFind) return false
       }
       console.log('login')
 
+      return true
 
-      return result
+
+   
   }
 
 }

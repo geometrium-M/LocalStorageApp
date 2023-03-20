@@ -1,29 +1,35 @@
 
-<div class="wrapper">
+<div class="wrapper" *ngIf="chartOptions">
+  <div class="title">Activities Report for {{date | date:'MMMM'}}</div>
   <div class="wrapper-chart">
     <canvasjs-chart [options]="chartOptions" [styles]="{width: '100%', height:'360px'}"></canvasjs-chart>
   </div>
   <div class="example">
     <div class="wrapper-data">
-      <!-- <div><span>Total:</span>{{totalList}}</div>
-      <div> <span>to do:</span> {{toDoList}}</div>
-      <div><span>done:</span> </div> -->
+      <div> <span>to do:</span>{{chartService.toDoLength}}</div>
+      <div><span>done:</span>{{chartService.doneLength}}</div>
+      <div><span>Total:</span>{{chartService.totalLength}}</div>
     </div>
-
-    <div class="progress" style="max-width: 60%">
-    
-      <div class="progress-bar"
-          [ngStyle]="{'width.%':toDoPercentage}">{{toDoPercentage + '%'}}
+    <div class="progress-wrapper">
+      <div class="progress">
+        <div class="progress-bar"
+            [ngStyle]="{'width.%':toDoPercentage, 'background-color':'blue'}">{{toDoPercentage + '%'}}
+        </div>
+        <div class="progress-bar bg-success"
+        [ngStyle]="{'width.%':donePercentage, 'background-color':'green'}">{{donePercentage + '%'}}
+        </div>
       </div>
-      <div class="progress-bar bg-success"
-      [ngStyle]="{'width.%':donePercentage}">{{donePercentage + '%'}}
+      <div class="progress-details">
+        <div>to do</div>
+        <div>done</div>
       </div>
     </div>
-
-
   </div>
- 
 </div>
+
+
+
+
 
 
 

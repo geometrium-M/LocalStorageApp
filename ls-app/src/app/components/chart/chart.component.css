@@ -1,7 +1,18 @@
+:host {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
+.title {
+  font-size: 24px;
+  margin-bottom: 40px;
+}
 
 .wrapper {
   width: 100%;
+
   display: flex;
   justify-content: space-between;
 }
@@ -11,6 +22,7 @@ width: 50%;
 
 .wrapper-data {
   width: 50%;
+  margin-bottom: 30px;
   display: flex;
   flex-direction: column;
 
@@ -18,11 +30,54 @@ width: 50%;
 
 span {
   font-weight: 600;
+  margin-right: 10px;
 }
 
 .example {
   width: 50%;
-
+  height: 400px;
+  padding:auto 0;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
+
+.progress-wrapper {
+  width: 60%;
+}
+
+.progress-details {
+  display: flex;
+  justify-content: space-between;
+  width: 30%;
+  margin: 0 auto;
+  margin-top: 10px;
+}
+
+.progress-details div {
+  position: relative;
+}
+
+.progress-details div:first-child::before {
+  position: absolute;
+  content: '';
+  width: 10px;
+  height: 10px;
+  top: 25%;
+  left: -50%;
+  background-color: blue;
+  border-radius: 100%;
+}
+
+.progress-details div:last-child::before {
+  position: absolute;
+  content: '';
+  width: 10px;
+  height: 10px;
+  top: 25%;
+  left: -50%;
+  background-color: green;
+  border-radius: 100%;
+}
+
