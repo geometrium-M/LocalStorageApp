@@ -8,15 +8,17 @@
           <div>
             <div>{{item.description}}</div>
             <div>priority:{{item.level}}</div>
+            <div>expire in: {{getDays(item.expire)}} days</div>
           </div>
           <button mat-button (click)="restore(item,idx)"><mat-icon>restore</mat-icon>Restore</button>
         </div>
-     
       </div>
-      
     </div>
-
   </mat-card-content>
 </mat-card>
 </div>
+
+
+
+
 

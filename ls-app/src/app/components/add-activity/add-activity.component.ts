@@ -45,6 +45,7 @@ export class AddActivityComponent implements OnInit {
       checked:false,
       date:new Date()
     }
+   
     this.activitiesService.addActivity(activity)
 
     this.form.reset()

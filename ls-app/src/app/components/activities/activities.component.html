@@ -1,5 +1,6 @@
 
     <div class="activities">
+      <div class="title">Activities List</div>
       <div *ngFor="let priority of listOfPriority; let i = index" class="card"> 
         <mat-card>
           <mat-card-title>{{priority.value}}</mat-card-title>
@@ -26,14 +27,14 @@
                         </button>
                        
                           <label (click)="update(checkbox,priority.value,idx,inpt.value)">
-                            <button mat-icon-button>
-                              <mat-icon *ngIf="checkbox.checked">done</mat-icon>
-                              <mat-icon *ngIf="!checkbox.checked">create</mat-icon>
+                            <button mat-button>
+                              <mat-icon *ngIf="checkbox.checked" class="i-done">done</mat-icon>
+                              <mat-icon *ngIf="!checkbox.checked"class="i-create">create</mat-icon>
                             </button>
                             <input type="checkbox" #checkbox hidden>
                           </label>
   
-                       <input type="checkbox" [(ngModel)]='item.checked'>done
+                       <input type="checkbox" [(ngModel)]='item.checked'><span class="checkbox">done</span> 
                      </div>
 
                      <div class="date">{{item.date | date:'short'}}</div>

@@ -39,10 +39,10 @@ mat-toolbar-row {
   border-radius: 100%;
 }
 
+
 .user-options {
   position: absolute;
-  top: 105%;
-  left: -30%; 
+  left: -150%;
   width: 150px;
   height: 100px;
   background-color: white;
@@ -83,3 +83,10 @@ button {
 .rotate {
   rotate: 180deg;
 }
+
+.logo {
+  width: auto;
+
+}
+
+

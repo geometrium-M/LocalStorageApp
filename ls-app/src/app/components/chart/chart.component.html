@@ -1,6 +1,5 @@
-
+<div class="title" *ngIf="chartOptions">Activities Report for {{date | date:'MMMM'}}</div>
 <div class="wrapper" *ngIf="chartOptions">
-  <div class="title">Activities Report for {{date | date:'MMMM'}}</div>
   <div class="wrapper-chart">
     <canvasjs-chart [options]="chartOptions" [styles]="{width: '100%', height:'360px'}"></canvasjs-chart>
   </div>
@@ -13,10 +12,10 @@
     <div class="progress-wrapper">
       <div class="progress">
         <div class="progress-bar"
-            [ngStyle]="{'width.%':toDoPercentage, 'background-color':'blue'}">{{toDoPercentage + '%'}}
+            [ngStyle]="{'width.%':toDoPercentage}">{{toDoPercentage + '%'}}
         </div>
         <div class="progress-bar bg-success"
-        [ngStyle]="{'width.%':donePercentage, 'background-color':'green'}">{{donePercentage + '%'}}
+        [ngStyle]="{'width.%':donePercentage}">{{donePercentage + '%'}}
         </div>
       </div>
       <div class="progress-details">
@@ -26,6 +25,10 @@
     </div>
   </div>
 </div>
+
+
+
+
 
 
 

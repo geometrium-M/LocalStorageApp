@@ -68,6 +68,8 @@ public get userV(){
 
 
       let users = JSON.parse(localStorage.getItem('users'))
+
+      if(!users) return false 
   
 
       if(users) {

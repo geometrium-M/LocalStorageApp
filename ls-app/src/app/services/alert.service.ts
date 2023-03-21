@@ -12,16 +12,6 @@ export class AlertService {
     this.error$.next(message)
   }
 
-  message(message:string) {
-    this.error$.next(message)
-  }
-  
-  deletedmessage(message:string) {
-    this.error$.next(message)
-  }
-
-  
-  
   clear() {
     this.error$.next('')
   }

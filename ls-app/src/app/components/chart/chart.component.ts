@@ -27,7 +27,7 @@ export class ChartComponent {
       this.donePercentage = this.chartOptions.data[0].dataPoints[1].y
     }
 
-    if(!this.chartOptions) this.alert.message('activities not found')
+    if(!this.chartOptions) this.alert.error('activities not found')
 
   }
 }

@@ -1,11 +1,6 @@
 <app-tool-bar></app-tool-bar>
 
 <div class="wrapper">
-
-
- 
-
-
   <div class="wrapper-actions" *ngIf="accoutService.userValue">
     <app-add-activity></app-add-activity>
     <button mat-button routerLink="" (click)="check()">all lists</button>
@@ -15,13 +10,8 @@
     <button mat-button routerLink="deleted"><mat-icon>delete_outline</mat-icon>deleted items</button>
   </div>
   <div class="wrapper-activities"> 
-    <app-alert></app-alert>
-
-    <!-- <app-login></app-login>
-<app-register></app-register> -->
-  
+    <app-alert></app-alert>  
     <router-outlet></router-outlet>
-
   </div>
 
 </div>
