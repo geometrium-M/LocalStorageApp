@@ -13,7 +13,7 @@ export class AccountService {
   
   public userSubject: BehaviorSubject<IUser | null>;
   public user: Observable<IUser | null>;
-  // id:any
+
 
 
 
@@ -24,7 +24,7 @@ export class AccountService {
     this.userSubject = new BehaviorSubject(JSON.parse(localStorage.getItem('user')!));
     this.user = this.userSubject.asObservable();
 
-    // console.log('init',this.user)
+
 
    
 

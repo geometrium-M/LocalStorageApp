@@ -1,11 +1,7 @@
 import { Injectable } from '@angular/core';
 import { IActivity } from '../model/activity';
-import { IPriority } from '../model/priority';
-import { priorities } from '../data/priorities';
 import { BehaviorSubject, Observable, of } from 'rxjs';
-
 import {pr} from '../data/priorities'
-
 import { AccountService } from './account.service';
 import { IUser } from '../model/user';
 
@@ -18,16 +14,11 @@ export class ActivitiesService {
   
 private prioritiesSubject: BehaviorSubject<any>;
 public priorities: Observable<any>;
-
-
-  
 filter:boolean
-
 user:IUser
 
 
 constructor(private accountService:AccountService) {
-
 
 
 this.accountService.userV.subscribe(us=>this.user = us)
@@ -62,18 +53,25 @@ assignValue() {
   
       let userDeleted = ls.find(l=>l.id === this.user.id)
       let idx = ls.indexOf(userDeleted)
-
-      userDeleted.activities.forEach(activity=> {
-        if (new Date(activity.expire).getTime() < new Date().getTime() ) {
-          let i = userDeleted.activities.indexOf(activity)
-          userDeleted.activities.splice(i,1)
-        }
-      })
-
-      ls[idx] = userDeleted
-      localStorage.setItem('deleted',JSON.stringify(ls))
+      if(userDeleted) {
+        userDeleted.activities.forEach(activity=> {
+          if (new Date(activity.expire).getTime() < new Date().getTime() ) {
+            let i = userDeleted.activities.indexOf(activity)
+            userDeleted.activities.splice(i,1)
+          }
+        })
   
-      observer.next(userDeleted.activities)
+        ls[idx] = userDeleted
+        localStorage.setItem('deleted',JSON.stringify(ls))
+    
+        observer.next(userDeleted.activities)
+      }
+      else {
+        return observer.next([])
+
+      }
+
+      
     }
     else return observer.next([])
   
@@ -235,31 +233,21 @@ updateActivitiesList() {
 
 
 restore(activity,index) {
-  console.log(activity)
+
   delete activity.expire
-  console.log(activity)
   let arr = JSON.parse(localStorage.getItem('prioritiesList'))
   let el =  arr.find((item)=>item.id === this.user.id)
-  const indx = arr.indexOf(el)
   this.prioritiesValue.priorities.find(pr=>pr.id === +activity.level).activities.push(activity)
-  arr[indx] = this.prioritiesValue
+  arr[arr.indexOf(el)] = this.prioritiesValue
   localStorage.setItem('prioritiesList', JSON.stringify(arr) )
-
 
   let del = JSON.parse(localStorage.getItem('deleted'))
 
   let userDeleted = del.find(l=>l.id === this.user.id)
-  let idx = del.indexOf(userDeleted)
-  console.log(idx)
-  console.log(userDeleted)
-  console.log(index)
 
   userDeleted.activities.splice(index,1)
-  console.log(userDeleted)
 
-  del[idx] = userDeleted
-
-  console.log(del)
+  del[del.indexOf(userDeleted)] = userDeleted
 
   localStorage.setItem('deleted', JSON.stringify(del))
 }
