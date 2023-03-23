@@ -2,10 +2,10 @@
   <mat-toolbar-row>
     <button class="logo" routerLink="">To Do Application</button>
    
-    <div class="user-info" *ngIf="accountService.userValue">
+    <div class="user-info" *ngIf="user">
       <div class="user-data">
-        <div>{{accountService.userValue.firstName}}</div>
-        <div>{{accountService.userValue.lastName}}</div>
+        <div>{{user.firstName}}</div>
+        <div>{{user.lastName}}</div>
       </div>
  
       <div class="user-img">

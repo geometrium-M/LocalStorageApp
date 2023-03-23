@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ActivitiesService } from './services/activities.service';
 import { AccountService } from './services/account.service';
 import { Router } from '@angular/router';
+import { IUser } from './model/user';
 
 @Component({
   selector: 'app-root',
@@ -12,8 +13,11 @@ import { Router } from '@angular/router';
 export class AppComponent {
   title = 'ls-app'; 
 
-  constructor(public activityService: ActivitiesService, public accoutService:AccountService, public router:Router ) {
-    console.log(accoutService.userValue)
+  user:IUser
+
+  constructor(public activityService: ActivitiesService, public accountService:AccountService, public router:Router ) {
+    this.accountService.userV.subscribe(us=>this.user = us)
+
   }
 
   changeListType() {

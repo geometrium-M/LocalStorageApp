@@ -13,7 +13,7 @@ import { getDays } from '../helpers/date.methods';
 export class DeletedActivitiesComponent {
   list:any
   constructor(private activitiesService:ActivitiesService, private router:Router, private alert:AlertService){
-    this.activitiesService.assignValue().subscribe((list)=>this.list = list)
+    this.activitiesService.getDeletedList().subscribe((list)=>this.list = list)
     console.log(this.list)
   }
 

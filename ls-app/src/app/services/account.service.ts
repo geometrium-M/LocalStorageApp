@@ -10,44 +10,20 @@ import { IUser } from '../model/user';
 })
 export class AccountService {
 
-  
   public userSubject: BehaviorSubject<IUser | null>;
-  public user: Observable<IUser | null>;
-
-
-
-
-
 
   constructor(private router:Router) {
-    console.log('user init')
     this.userSubject = new BehaviorSubject(JSON.parse(localStorage.getItem('user')!));
-    this.user = this.userSubject.asObservable();
-
-
-
-   
-
-
-
-
-   
   }
 
-  ngOnInit() {
-    
-   
-  }
-public get userV(){
-  return this.userSubject.asObservable()
-}
-  public get userValue() {
-    return this.userSubject.value;
+  ngOnInit() {}
+
+  public get userV(){
+    return this.userSubject.asObservable()
   }
 
   register(user:IUser) {
     if(!localStorage.hasOwnProperty('users')) {
-      console.log('server')
       let users = []
       users.push(user)
       localStorage.setItem('users', JSON.stringify(users))
@@ -56,16 +32,11 @@ public get userV(){
       let users =  JSON.parse(localStorage.getItem('users'))
       users.push(user)
       localStorage.setItem('users', JSON.stringify(users))
-      
     }
-
-
-    this.router.navigate([''])
     
   }
 
-  login(userName,password) {
-
+  login(userName:string,password:string) {
 
       let users = JSON.parse(localStorage.getItem('users'))
 

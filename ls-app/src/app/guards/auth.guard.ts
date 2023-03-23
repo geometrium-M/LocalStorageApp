@@ -9,11 +9,14 @@ import { AccountService } from '../services/account.service';
 })
 export class AuthGuard implements CanActivate {
 
-  constructor(private accoutService:AccountService, private router:Router){}
+  constructor(private accountService:AccountService, private router:Router){}
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot) {
-      const user = this.accoutService.userValue
+     let user
+    this.accountService.userV.subscribe(us=>user = us)
+      console.log(user)
+
 
       if(user){
         

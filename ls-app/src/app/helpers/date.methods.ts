@@ -7,7 +7,6 @@ export function compare(a:Date) {
 }
 
 export function getDays(date) {
-  console.log(date)
 
   let date1 = new Date(date).getTime()
   console.log(date1)

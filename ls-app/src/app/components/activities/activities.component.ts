@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivitiesService } from 'src/app/services/activities.service';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
-import { IPriority } from 'src/app/model/priority';
-import { priorities } from 'src/app/data/priorities';
 import { AccountService } from 'src/app/services/account.service';
 
 

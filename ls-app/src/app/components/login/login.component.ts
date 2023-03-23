@@ -2,10 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup,FormBuilder, Validators } from '@angular/forms';
 import { AccountService } from 'src/app/services/account.service';
 import { Router } from '@angular/router';
-
-import { IUser } from 'src/app/model/user';
 import { AlertService } from 'src/app/services/alert.service';
-import { ActivitiesService } from 'src/app/services/activities.service';
 
 @Component({
   selector: 'app-login',
@@ -14,10 +11,13 @@ import { ActivitiesService } from 'src/app/services/activities.service';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private fb:FormBuilder, private accoutService:AccountService, private router:Router, private alert:AlertService, private activitiesService:ActivitiesService){}
+  constructor(
+    private fb:FormBuilder, 
+    private accoutService:AccountService, 
+    private router:Router, 
+    private alert:AlertService){}
 
   form:FormGroup
-  sumbit:boolean
 
  ngOnInit(): void {
    this.form = this.fb.group({
@@ -30,17 +30,12 @@ export class LoginComponent implements OnInit {
  onSubmit() {
 
   if(this.form.valid) {
-    let userName = this.form.value.userName
-    let password = this.form.value.password
+    let userName = this.form.value.userName.trim()
+    let password = this.form.value.password.trim()
     let res = this.accoutService.login(userName, password)
-    console.log(res)
-    
-    if(res) this.router.navigate([''])
-    
-    if(!res) this.alert.error('Incorrect username or password.')
- 
-  }
-  
- }
 
+    if(res) this.router.navigate([''])
+    if(!res) this.alert.error('Incorrect username or password.')
+  }
+ }
 }

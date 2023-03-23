@@ -1,7 +1,6 @@
 import { Component,OnInit } from '@angular/core';
 import { FormGroup,FormBuilder,Validators } from '@angular/forms';
 import { AccountService } from 'src/app/services/account.service';
-import { IUser } from 'src/app/model/user';
 import { Router } from '@angular/router';
 
 @Component({
@@ -28,8 +27,9 @@ export class RegisterComponent implements OnInit{
   onSubmit() {
     this.form.get('id').setValue(Date.now())
     console.log(this.form.value)
-    if(this.form.valid)
-    this.accountService.register(this.form.value)
+    if(this.form.valid) {
+      this.accountService.register(this.form.value)
+      this.router.navigate([''])
+    }
   }
-
 }
