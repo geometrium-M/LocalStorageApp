@@ -1,9 +1,6 @@
 import { Component, Input, OnInit, OnChanges } from '@angular/core';
 import { ActivitiesService } from 'src/app/services/activities.service';
-import { IActivity } from 'src/app/model/activity';
 import { optionsList } from 'src/app/data/sortList';
-import { ActivatedRoute} from '@angular/router';
-
 
 
 @Component({

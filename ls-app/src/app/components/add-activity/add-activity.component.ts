@@ -23,8 +23,6 @@ export class AddActivityComponent implements OnInit {
  
   levels:ILevel[] = levelsList
 
-
-
  ngOnInit(): void {
    this.form = this.fb.group({
     activity:this.fb.control(''),
@@ -51,13 +49,6 @@ export class AddActivityComponent implements OnInit {
     this.form.reset()
     event.preventDefault()
   }
-
   this.router.navigate([''])
-
-
-
  }
-
-
-
 }

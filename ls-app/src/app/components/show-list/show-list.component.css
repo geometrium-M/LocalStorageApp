@@ -1,17 +1,19 @@
 :host {
-  margin-top: 40px;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-.wrapper_list {
-  width: 100%;
-  
-}
 
 mat-card {
-
   border: 2px solid rgb(192, 192, 236);
+
+  box-shadow:
+  0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+  0 6.7px 5.3px rgba(0, 0, 0, 0.048),
+  0 12.5px 10px rgba(0, 0, 0, 0.06),
+  0 22.3px 17.9px rgba(0, 0, 0, 0.072),
+  0 41.8px 33.4px rgba(0, 0, 0, 0.086),
+  0 100px 80px rgba(0, 0, 0, 0.12); 
 }
 
 mat-card-title {
@@ -19,9 +21,10 @@ mat-card-title {
   text-align: center;
 }
 
+
 .items {
   border: solid 1px #ccc;
-  min-height: 60px;
+  min-height: 80px;
   background: white;
   border-radius: 4px;
   overflow: hidden;
@@ -34,12 +37,8 @@ mat-card-title {
 
 .item {
   position: relative;
-  padding: 20px 10px;
+  padding: 20px;
   border-bottom: solid 1px #ccc;
-  color: rgba(0, 0, 0, 0.87);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
   box-sizing: border-box;
   cursor: move;
   background: white;
@@ -47,9 +46,13 @@ mat-card-title {
   min-height: 80px;
 }
 
+
 .item_description {
   font-size: 18px;
+  height: 100%;
+  margin-bottom: 20px;
 }
+
 
 .item_date {
   position: absolute;
@@ -58,7 +61,7 @@ mat-card-title {
 }
 
 .wrapper {
-  width: 50%;
+   width: 50%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -70,8 +73,8 @@ form {
   justify-content: space-between;
 }
 
-.mat-mdc-form-field:first-child {
-width: 60%;
+.wrapper_list {
+  width: 100%;
 }
 
 .mat-mdc-card-content:last-child {
@@ -89,5 +92,5 @@ mat-icon {
 
 .title {
   font-size: 24px;
-  margin-bottom: 20px;
+  margin: 30px;
 }

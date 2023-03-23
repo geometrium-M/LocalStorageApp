@@ -1,6 +1,7 @@
 .wrapper {
   display: flex;
   height: 100%;
+  width: 100%;
 }
 
 .wrapper-actions {
@@ -10,12 +11,12 @@
   background-color: rgb(73, 72, 72);
  
 
-  padding:20px;
+  padding:60px 20px;
 }
 
 .wrapper-activities {
   padding: 20px;
- width: 100%;
+  width: 75%;
 }
 button {
   background-color:rgb(173, 169, 169);

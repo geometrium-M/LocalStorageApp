@@ -1,52 +1,51 @@
+<div class="activities">
+  <div *ngFor="let priority of listOfPriority; let i = index" class="card"> 
+    <mat-card>
+      <mat-card-title>{{priority.value}}</mat-card-title>
+      <mat-card-content>
+        <div>
+          <div>
+            <div
+              cdkDropList
+              id = "{{priority.id}}"
+              [cdkDropListData]="priority.activities"
+              [cdkDropListConnectedTo]="cdkDropListConnectedTo()"
+              class="example-list"
+              (cdkDropListDropped)="drop($event)">
 
-    <div class="activities">
-      <div class="title">Activities List</div>
-      <div *ngFor="let priority of listOfPriority; let i = index" class="card"> 
-        <mat-card>
-          <mat-card-title>{{priority.value}}</mat-card-title>
-          <mat-card-content>
-            <div>
-              <div>
-                <div
-                  cdkDropList
-                  id = "{{priority.id}}"
-                  [cdkDropListData]="priority.activities"
-                  [cdkDropListConnectedTo]="cdkDropListConnectedTo()"
-                  class="example-list"
-                  (cdkDropListDropped)="drop($event)"
-                >
-                  <div class="example-box" *ngFor="let item of priority.activities; let idx = index" cdkDrag>
-                  
-                      <input type="text" value="{{item.description}}" #inpt [ngClass]="{'disabled':!checkbox.checked}">
-                   
-                    
-              
-                      <div class="actions">
-                        <button mat-icon-button (click)="delete(priority.value,idx)">
-                          <mat-icon class="i-delete">delete</mat-icon>
-                        </button>
-                       
-                          <label (click)="update(checkbox,priority.value,idx,inpt.value)">
-                            <button mat-button>
-                              <mat-icon *ngIf="checkbox.checked" class="i-done">done</mat-icon>
-                              <mat-icon *ngIf="!checkbox.checked"class="i-create">create</mat-icon>
-                            </button>
-                            <input type="checkbox" #checkbox hidden>
-                          </label>
-  
-                       <input type="checkbox" [(ngModel)]='item.checked'><span class="checkbox">done</span> 
-                     </div>
+              <div class="example-box" *ngFor="let item of priority.activities; let idx = index" cdkDrag>
+                <textarea name="" id="txt" value="{{item.description}}" #inpt [ngClass]="{'disabled':!checkbox.checked}"></textarea>
+           
+                <div class="wrapper_actions">
 
-                     <div class="date">{{item.date | date:'short'}}</div>
+                  <div class="date">{{item.date | date:'short'}}</div>
 
+                  <div class="actions">
+                    <button mat-icon-button (click)="delete(priority.value,idx)">
+                      <mat-icon class="i-delete">delete</mat-icon>
+                    </button>                      
+                    <label (click)="update(checkbox,priority.value,idx,inpt.value)">
+                      <button mat-button>
+                        <mat-icon *ngIf="checkbox.checked" class="i-done">done</mat-icon>
+                        <mat-icon *ngIf="!checkbox.checked"class="i-create">create</mat-icon>
+                      </button>
+                      <input type="checkbox" #checkbox hidden>
+                    </label>
+                    <input type="checkbox" [(ngModel)]='item.checked'><span class="checkbox">done</span> 
                   </div>
+              
                 </div>
+
+           
               </div>
+
             </div>
-          </mat-card-content>
-        </mat-card>
-      </div> 
-    </div>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div> 
+</div>
  
 
 

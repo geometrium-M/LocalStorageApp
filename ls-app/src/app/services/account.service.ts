@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { BehaviorSubject, map, Observable } from 'rxjs';
-
-
+import { BehaviorSubject } from 'rxjs';
 import { IUser } from '../model/user';
 
 @Injectable({
@@ -12,28 +10,26 @@ export class AccountService {
 
   public userSubject: BehaviorSubject<IUser | null>;
 
-  constructor(private router:Router) {
+  constructor() {
     this.userSubject = new BehaviorSubject(JSON.parse(localStorage.getItem('user')!));
   }
 
   ngOnInit() {}
-
   public get userV(){
     return this.userSubject.asObservable()
   }
 
   register(user:IUser) {
+    let users:IUser[]
     if(!localStorage.hasOwnProperty('users')) {
-      let users = []
+      users = []
       users.push(user)
-      localStorage.setItem('users', JSON.stringify(users))
     }
     else {
-      let users =  JSON.parse(localStorage.getItem('users'))
+      users = JSON.parse(localStorage.getItem('users'))
       users.push(user)
-      localStorage.setItem('users', JSON.stringify(users))
     }
-    
+    localStorage.setItem('users', JSON.stringify(users))
   }
 
   login(userName:string,password:string) {
@@ -42,7 +38,6 @@ export class AccountService {
 
       if(!users) return false 
   
-
       if(users) {
         let userFind = users.find(us=>{ 
           return us.userName === userName && us.password === password
@@ -55,12 +50,7 @@ export class AccountService {
 
         if(!userFind) return false
       }
-      console.log('login')
 
-      return true
-
-
-   
+     return true
   }
-
 }

@@ -24,6 +24,5 @@ export class DeletedActivitiesComponent {
 
   getDays(date) {
     return getDays(date)
-
   }
 }

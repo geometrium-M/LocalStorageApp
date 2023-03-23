@@ -1,8 +1,7 @@
-
-  <div *ngIf="alert.error$ | async as error" class="alert alert-danger" role="alert">
-    <div>{{error}}</div>
-    <button (click)="alert.clear()">x</button>
-  </div>
+<div *ngIf="alert.error$ | async as error" class="alert alert-danger" role="alert">
+  <div>{{error}}</div>
+  <button (click)="alert.clear()">x</button>
+</div>
 
   
 

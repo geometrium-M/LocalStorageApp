@@ -2,7 +2,11 @@
 
 
 html, body { height: 100vh; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;}
+body { 
+  margin: 0; 
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background-color: rgb(216, 221, 221);
+}
 
 
 .canvasjs-chart-credit {

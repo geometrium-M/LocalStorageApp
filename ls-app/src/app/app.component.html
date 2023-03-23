@@ -3,9 +3,9 @@
 <div class="wrapper">
   <div class="wrapper-actions" *ngIf="user">
     <app-add-activity></app-add-activity>
-    <button mat-button routerLink="" (click)="check()">all lists</button>
-    <button mat-button (click)="showToDo(); check()" routerLink= 'list' >to do</button>
-    <button mat-button (click)="showDone(); check()" routerLink='list'>done</button>
+    <button mat-button routerLink="" >all lists</button>
+    <button mat-button (click)="showToDo()" routerLink= 'list' >to do</button>
+    <button mat-button (click)="showDone()" routerLink='list'>done</button>
     <button mat-button routerLink="report">report</button>   
     <button mat-button routerLink="deleted"><mat-icon>delete_outline</mat-icon>deleted items</button>
   </div>

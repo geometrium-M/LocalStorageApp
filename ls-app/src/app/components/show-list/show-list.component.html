@@ -1,37 +1,36 @@
-
-    <div class="wrapper">
-      <form action="">
-        <mat-form-field class="example-full-width">
-          <mat-label> <mat-icon>search</mat-icon>Filter actions</mat-label>
-          <input matInput [(ngModel)]="activitiesFilter" [ngModelOptions]="{standalone: true}">
-        </mat-form-field>
-        <mat-form-field>
-          <mat-label>sort by</mat-label>
-          <mat-select #select>
-            <mat-option *ngFor="let option of optionsList" [value]="option">
-              {{option}}
-            </mat-option> 
-          </mat-select>
-        </mat-form-field>
-      </form>
-      <div class="title">
-        <div *ngIf="!activitiesService.filter; else done">Activities To Do List</div>
-        <ng-template #done>Activities Done List</ng-template>
-      </div>
-      <div class="wrapper_list">
-        <mat-card>
-          <mat-card-content class="items">
-             <div *ngFor="let activity of activitiesList | activitiesCheckedFilter : activitiesService.filter | activitiesFilter:activitiesFilter | sortBy:select.value"> 
-              <div class="item">
-           
-                <div class="item_description"> {{activity.description}}</div>
-                <div class="item_date">{{activity.date | date:'short'}}</div>
-           
-              </div>
-            </div>
-          </mat-card-content>
-        </mat-card> 
-      </div>
+<div class="wrapper">
+  <form action="">
+    <mat-form-field class="example-full-width">
+      <mat-label> <mat-icon>search</mat-icon>Filter actions</mat-label>
+      <input matInput [(ngModel)]="activitiesFilter" [ngModelOptions]="{standalone: true}">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>sort by</mat-label>
+      <mat-select #select>
+        <mat-option *ngFor="let option of optionsList" [value]="option">
+          {{option}}
+        </mat-option> 
+      </mat-select>
+    </mat-form-field>
+  </form>
+    <div class="title">
+      <div *ngIf="!activitiesService.filter; else done">Activities To Do List</div>
+      <ng-template #done>Activities Done List</ng-template>
     </div>
+    <div class="wrapper_list">
+      <mat-card>
+        <mat-card-content class="items">
+          <div *ngFor="let activity of activitiesList | activitiesCheckedFilter : activitiesService.filter | activitiesFilter:activitiesFilter | sortBy:select.value" > 
+            <div class="item">
+              <div class="item_description">
+                  {{activity.description}}
+              </div>
+              <div class="item_date">{{activity.date | date:'short'}}</div>
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-card> 
+    </div>
+</div>
 
   

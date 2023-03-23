@@ -1,22 +1,25 @@
-<h1>Deleted activities</h1>
+<div class="title">Deleted Activities</div>
 <div class="wrapper">
-<mat-card>
-  <mat-card-content class="items">
-    <div *ngFor="let item of list; let idx = index">
-      <div class="item">
-        <div class="item-data">
-          <div>
-            <div>{{item.description}}</div>
-            <div>priority:{{item.level}}</div>
-            <div>expire in: {{getDays(item.expire)}} days</div>
+  <div class="wrapper-card">
+    <mat-card>
+      <mat-card-content class="items">
+        <div *ngFor="let item of list; let idx = index">
+          <div class="item">
+            <div class="item-data">
+              <div class="item-description">{{item.description}}</div>
+              <button mat-button (click)="restore(item,idx)"><mat-icon>restore</mat-icon>Restore</button>
+            </div>
+            <div class="expire-data">expire in: {{getDays(item.expire)}} days</div>
           </div>
-          <button mat-button (click)="restore(item,idx)"><mat-icon>restore</mat-icon>Restore</button>
         </div>
-      </div>
+      </mat-card-content>
+    </mat-card>
     </div>
-  </mat-card-content>
-</mat-card>
 </div>
+
+
+
+
 
 
 

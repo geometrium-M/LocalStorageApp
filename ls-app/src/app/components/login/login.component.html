@@ -2,38 +2,23 @@
   <img src='../../../assets/logo1.png'>
   <div class="logo_title">Sign in to App</div>
 </div>
-
 <div class="wrapper">
   <mat-card>
     <mat-card-content>
       <form [formGroup]="form" class="form" (ngSubmit)="onSubmit()">
-    
-          <mat-form-field>
-            <input type="text" matInput placeholder="Username" formControlName="userName">
-          </mat-form-field>
-      
-      
- 
-          <mat-form-field>
-            <input type="password" matInput placeholder="Password" formControlName="password">
-          </mat-form-field>
-      
-      
-      
+        <mat-form-field>
+          <input type="text" matInput placeholder="Username" formControlName="userName">
+        </mat-form-field>
+        <mat-form-field>
+          <input type="password" matInput placeholder="Password" formControlName="password">
+        </mat-form-field>
         <div>
           <button type="submit" class="login-button">Sign in</button>
         </div>
-      
       </form>
     </mat-card-content>
   </mat-card>
-
-
-  
-
-  
 </div>
-
 <div class="wrapper_register">
   <span>new user?</span>
   <button routerLink="/register" class="register-button">Create an account</button>

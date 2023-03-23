@@ -22,25 +22,13 @@ export class AppComponent {
 
   changeListType() {
     this.activityService.filter = !this.activityService.filter
-
-    console.log(this.activityService.filter)
   }
   showToDo() {
     this.activityService.filter = false
-    console.log(this.activityService.filter)
   }
+  
   showDone() {
     this.activityService.filter = true
-    console.log(this.activityService.filter)
   }
 
-
-  check() {
-    console.log(this.router.url)
-    
-    // if(!(this.router.url === '/report')) {
-    //   this.alert.clear()
-      
-    //  }
-  }
 }
